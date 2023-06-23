@@ -4,18 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-
 Future<void>main()async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
-  
+
+import 'local/storage_repository.dart';
+
+Future<void> main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageRepository.getInstance();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -23,6 +29,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
+
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -33,6 +40,17 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },
+    );
+  }
+}
+
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        ),
+        home: const HomeScreen(),
+      );},
     );
   }
 }
