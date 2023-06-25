@@ -4,13 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-Future<void>main()async{
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await StorageRepository.getInstance();
-
-import 'local/storage_repository.dart';
-
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
@@ -40,17 +33,6 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },
-    );
-  }
-}
-
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        ),
-        home: const HomeScreen(),
-      );},
     );
   }
 }
