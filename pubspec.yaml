@@ -103,3 +103,38 @@ flutter:
          - asset: assets/fonts/Raleway/Raleway-SemiBoldItalic.ttf
          - asset: assets/fonts/Raleway/Raleway-Thin.ttf
          - asset: assets/fonts/Raleway/Raleway-ThinItalic.ttf
+
+    - family: DMSans
+      fonts:
+         - asset: assets/fonts/DMSans/DMSans-BoldItalic.ttf
+         - asset: assets/fonts/DMSans/DMSans-Italic.ttf
+         - asset: assets/fonts/DMSans/DMSans-Bold.ttf
+         - asset: assets/fonts/DMSans/DMSans-Medium.ttf
+         - asset: assets/fonts/DMSans/DMSans-MediumItalic.ttf
+         - asset: assets/fonts/DMSans/DMSans-Regular.ttf
+
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/Inter/Inter-Black.ttf
+        - asset: assets/fonts/Inter/Inter-Bold.ttf
+        - asset: assets/fonts/Inter/Inter-ExtraBold.ttf
+        - asset: assets/fonts/Inter/Inter-ExtraLight.ttf
+        - asset: assets/fonts/Inter/Inter-Light.ttf
+        - asset: assets/fonts/Inter/Inter-Medium.ttf
+        - asset: assets/fonts/Inter/Inter-Regular.ttf
+        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
+        - asset: assets/fonts/Inter/Inter-Thin.ttf
+
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/Lato/Lato-Black.ttf
+        - asset: assets/fonts/Lato/Lato-BlackItalic.ttf
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
+        - asset: assets/fonts/Lato/Lato-BoldItalic.ttf
+        - asset: assets/fonts/Lato/Lato-Italic.ttf
+        - asset: assets/fonts/Lato/Lato-Light.ttf
+        - asset: assets/fonts/Lato/Lato-LightItalic.ttf
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
+        - asset: assets/fonts/Lato/Lato-Thin.ttf
+        - asset: assets/fonts/Lato/Lato-ThinItalic.ttf
+
