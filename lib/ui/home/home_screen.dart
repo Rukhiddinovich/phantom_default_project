@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../models/currency_model.dart';
+import '../../models/universal_response.dart';
 
 class CurrenciesScreen extends StatefulWidget {
   const CurrenciesScreen({super.key});
@@ -21,6 +22,11 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
 
   bool isLoading = false;
 
+  getDataf()async{
+    UniversalResponse universalResponse =await ApiProvider().getAllCurrencies();
+    print(universalResponse.error);
+  }
+
   _fetchData() async {
     setState(() {
       isLoading = true;
@@ -33,6 +39,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
 
   @override
   void initState() {
+    getDataf();
     _fetchData();
     super.initState();
   }
@@ -40,13 +47,13 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: const Text(
+        title: Text(
           "Bank Cards",
           style: TextStyle(
-              fontSize: 20,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w600,
               color: Colors.white,
               fontFamily: "Poppins"),
@@ -71,6 +78,8 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                             "0xFF${currency.colors["color_b"].toString().substring(1)}";
                         return ZoomTapAnimation(
                           child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15.w,vertical: 7.h),
+                            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.r),
                               gradient: LinearGradient(
@@ -89,19 +98,19 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                                   children: [
                                     Text(
                                       currency.bankName,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.black),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.sp,
+                                          color: Colors.white),
                                     ),
                                     Text(
                                       currency.cardType,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.black),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.sp,
+                                          color: Colors.white),
                                     ),
                                   ],
                                 ),
@@ -109,39 +118,35 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                                 Center(
                                   child: Text(
                                     "${currency.moneyAmount.toString()} ${currency.cardCurrency}",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontFamily: "Poppins",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: Colors.black),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 17.sp,
+                                        color: Colors.white),
                                   ),
                                 ),
                                 SizedBox(height: 20.h),
-                                Row(
-                                  children: [
-                                    Text(
-                                      currency.cardNumber,
-                                      style: const TextStyle(
-                                          fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.black),
-                                    ),
-                                  ],
+                                Text(
+                                  "CARD NUMBER: ${currency.cardNumber}",
+                                  style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14.sp,
+                                      color: Colors.white),
                                 ),
                                 SizedBox(height: 20.h),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "EXPIRE DATE:${currency.expireDate}",
-                                      style: const TextStyle(
+                                      "EXPIRE DATE: ${currency.expireDate}",
+                                      style: TextStyle(
                                           fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.black),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 11.sp,
+                                          color: Colors.white),
                                     ),
-                                    Image.network(currency.iconImage),
+                                    Image.network(currency.iconImage,width: 50.w),
                                   ],
                                 ),
                               ],
@@ -149,7 +154,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
     );
