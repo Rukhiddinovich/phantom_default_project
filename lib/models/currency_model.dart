@@ -26,7 +26,7 @@ class CurrencyModel {
     return CurrencyModel(
       id: json["id"] as num? ?? 0,
       bankName: json["bank_name"]as String? ?? "",
-      cardCurrency: json["card_currency"]as String? ?? "SO'M",
+      cardCurrency: json["card_currency"]as String? ?? "",
       cardNumber: json["card_number"]as String? ?? "",
       cardType: json["card_type"]as String? ?? "",
       expireDate: json["expire_date"]as String? ?? "",
