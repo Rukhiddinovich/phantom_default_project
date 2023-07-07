@@ -10,7 +10,7 @@ class ApiProvider {
       http.Response response = await http.get(uri);
       return UniversalResponse(
         data: (response.body as List?)
-            ?.map((e) => CurrencyModel.fromjson(e))
+            ?.map((e) => CurrencyModel.fromJson(e))
             .toList() ??
             [],
       );
