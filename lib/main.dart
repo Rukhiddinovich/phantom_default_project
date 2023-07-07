@@ -1,12 +1,9 @@
-import 'package:default_project/local/storage_repository.dart';
 import 'package:default_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await StorageRepository.getInstance();
 
+Future<void> main()async {
   runApp(const MyApp());
 }
 
@@ -21,13 +18,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
+
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: HomeScreen(),
+          home: const HomeScreen(),
         );
       },
     );
