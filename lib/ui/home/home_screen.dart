@@ -40,9 +40,9 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.indigo,
         title: const Text(
           "Bank Cards",
           style: TextStyle(
@@ -55,7 +55,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
       ),
       body: isLoading
           ? const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(color: Colors.indigo,),
             )
           : currencies.isEmpty
               ? const Center(child: Text("Not Found"))
