@@ -12,11 +12,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   String searchText = "";
 
   final ProductRepository productRepository =
-  ProductRepository(apiProvider: ApiProvider());
+      ProductRepository(apiProvider: ApiProvider());
   List<ProductsModel> product = [];
 
   bool isLoading = false;
@@ -37,22 +36,23 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text("Products",style: TextStyle(fontSize: 24.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+        title: Text(
+          "Products",
+          style: TextStyle(
+              fontSize: 24.sp,
+              fontWeight: FontWeight.w600,
+              color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: const Column(
-        children: [
-
-        ],
+        children: [],
       ),
     );
   }
