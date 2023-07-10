@@ -3,9 +3,9 @@ import '../../models/product/products_model.dart';
 import '../../models/universal_response.dart';
 
 
-class CurrencyRepository {
+class ProductRepository {
   final ApiProvider apiProvider;
-  CurrencyRepository({required this.apiProvider});
+  ProductRepository({required this.apiProvider});
 
   Future<List<ProductsModel>>fetchCurrencies()async{
     UniversalResponse universalResponse=await apiProvider.getAllProducts();

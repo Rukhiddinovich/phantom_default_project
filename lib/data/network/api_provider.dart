@@ -20,7 +20,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -38,7 +38,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -56,7 +56,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -74,7 +74,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -105,7 +105,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -137,7 +137,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -157,7 +157,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -177,7 +177,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => UsersModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -213,7 +213,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => ProductsModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
@@ -236,7 +236,7 @@ class ApiProvider {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
                 ?.map((e) => LoginModel.fromJson(e))
-                .toString() ??
+                .toList() ??
                 []);
       }
       return UniversalResponse(error: "ERROR");
