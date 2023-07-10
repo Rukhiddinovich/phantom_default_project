@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 import '../../models/users/users_model.dart';
 
 class ApiProvider {
-  //Products Response
-  //get response
+  //<<<<<<<<Products Response>>>>>>>>
+  //<<<<<<<<get response>>>>>>>>
 
   Future<UniversalResponse> getAllProducts() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/products");
@@ -83,7 +83,7 @@ class ApiProvider {
     }
   }
 
-  //post response
+  //<<<<<<<<post response>>>>>>>>
   Future<UniversalResponse> addProduct(String title, String description,
       num price, String image, String category) async {
     Uri uri = Uri.parse("https://fakestoreapi.com/auth/login");
@@ -114,7 +114,7 @@ class ApiProvider {
     }
   }
 
-  //put response
+  //<<<<<<<<put response>>>>>>>>
 
   Future<UniversalResponse> updateProduct(String title, String description,
       num price, String image, String category) async {
@@ -146,7 +146,7 @@ class ApiProvider {
     }
   }
 
-  //delete response
+  //<<<<<<<<delete response>>>>>>>>
 
   Future<UniversalResponse> deleteProduct(String id)async{
     Uri uri = Uri.parse("https://fakestoreapi.com/products/$id");
@@ -166,7 +166,7 @@ class ApiProvider {
     }
   }
 
-  //User Response
+  //<<<<<<<<User Response>>>>>>>>
 
   Future<UniversalResponse> getAllUsers() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/users");
@@ -186,7 +186,7 @@ class ApiProvider {
     }
   }
 
-  //Category Response
+  //<<<<<<<<Category Response>>>>>>>>
 
   Future<UniversalResponse> getAllCategories() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/products/categories");
@@ -222,7 +222,7 @@ class ApiProvider {
     }
   }
 
-  // Login Response
+  // <<<<<<<<Login Response>>>>>>>>
 
   Future<UniversalResponse> postLoginUser(
       String username, String password) async {
