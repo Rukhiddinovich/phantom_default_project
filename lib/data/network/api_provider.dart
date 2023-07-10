@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 import '../../models/users/users_model.dart';
 
 class ApiProvider {
-  //<<<<<<<<Products Response>>>>>>>>
-  //<<<<<<<<get response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Products Response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<get response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   Future<UniversalResponse> getAllProducts() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/products");
@@ -19,9 +19,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -37,9 +38,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -55,9 +57,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -73,9 +76,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -83,7 +87,8 @@ class ApiProvider {
     }
   }
 
-  //<<<<<<<<post response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<post response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
   Future<UniversalResponse> addProduct(String title, String description,
       num price, String image, String category) async {
     Uri uri = Uri.parse("https://fakestoreapi.com/auth/login");
@@ -104,9 +109,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -114,7 +120,7 @@ class ApiProvider {
     }
   }
 
-  //<<<<<<<<put response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<put response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   Future<UniversalResponse> updateProduct(String title, String description,
       num price, String image, String category) async {
@@ -136,9 +142,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -146,27 +153,28 @@ class ApiProvider {
     }
   }
 
-  //<<<<<<<<delete response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<delete response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  Future<UniversalResponse> deleteProduct(String id)async{
+  Future<UniversalResponse> deleteProduct(String id) async {
     Uri uri = Uri.parse("https://fakestoreapi.com/products/$id");
-    try{
+    try {
       http.Response response = await http.delete(uri);
 
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => ProductsModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
-    }catch(error){
+    } catch (error) {
       return UniversalResponse(error: error.toString());
     }
   }
 
-  //<<<<<<<<User Response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<User Response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   Future<UniversalResponse> getAllUsers() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/users");
@@ -176,9 +184,10 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalResponse(
             data: (jsonDecode(response.body) as List?)
-                ?.map((e) => UsersModel.fromJson(e))
-                .toList() ??
-                []);
+                    ?.map((e) => UsersModel.fromJson(e))
+                    .toList() ??
+                [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -186,7 +195,7 @@ class ApiProvider {
     }
   }
 
-  //<<<<<<<<Category Response>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Category Response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   Future<UniversalResponse> getAllCategories() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/products/categories");
@@ -195,8 +204,11 @@ class ApiProvider {
 
       if (response.statusCode == 200) {
         return UniversalResponse(
-            data: (CategoryModel(
-                categories: jsonDecode(response.body) as List<String>)));
+          data: (
+            CategoryModel(
+                categories: jsonDecode(response.body) as List<String>),
+          ),
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -211,10 +223,11 @@ class ApiProvider {
 
       if (response.statusCode == 200) {
         return UniversalResponse(
-            data: (jsonDecode(response.body) as List?)
-                ?.map((e) => ProductsModel.fromJson(e))
-                .toList() ??
-                []);
+          data: (jsonDecode(response.body) as List?)
+                  ?.map((e) => ProductsModel.fromJson(e))
+                  .toList() ??
+              [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
@@ -222,7 +235,7 @@ class ApiProvider {
     }
   }
 
-  // <<<<<<<<Login Response>>>>>>>>
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Login Response>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   Future<UniversalResponse> postLoginUser(
       String username, String password) async {
@@ -234,10 +247,11 @@ class ApiProvider {
               <String, String>{"username": username, "password": password}));
       if (response.statusCode == 200) {
         return UniversalResponse(
-            data: (jsonDecode(response.body) as List?)
-                ?.map((e) => LoginModel.fromJson(e))
-                .toList() ??
-                []);
+          data: (jsonDecode(response.body) as List?)
+                  ?.map((e) => LoginModel.fromJson(e))
+                  .toList() ??
+              [],
+        );
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {

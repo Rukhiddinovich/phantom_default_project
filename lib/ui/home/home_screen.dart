@@ -41,19 +41,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.white,
         title: Text(
           "Products",
           style: TextStyle(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white),
+              fontSize: 26.sp,
+              fontWeight: FontWeight.w700,
+              fontFamily: "MetalMania",
+              letterSpacing: 3,
+              color: Colors.red),
         ),
         centerTitle: true,
       ),
-      body: const Column(
-        children: [],
-      ),
+      body: Center(
+        child: Text("Monster",
+          style: TextStyle(
+              fontSize: 40.sp,
+              fontWeight: FontWeight.w700,
+              fontFamily: "MetalMania",
+              letterSpacing: 3,
+              color: Colors.red),),
+      )
     );
   }
 }
