@@ -1,6 +1,6 @@
 import 'package:default_project/models/product/rating_model.dart';
 
-class ProductsModel {
+class ProductModel {
   final num id;
   final String title;
   final num price;
@@ -9,7 +9,7 @@ class ProductsModel {
   final String image;
   final Rating? rating;
 
-  ProductsModel(
+  ProductModel(
       {required this.id,
       required this.title,
       required this.price,
@@ -18,8 +18,8 @@ class ProductsModel {
       required this.image,
       this.rating});
 
-  factory ProductsModel.fromJson(Map<String, dynamic> json) {
-    return ProductsModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
         id: json["id"] as num? ?? 0,
         title: json["title"] as String? ?? "",
         price: json["price"] as num? ?? 0,

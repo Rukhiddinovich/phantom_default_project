@@ -1,7 +1,7 @@
 import 'address_model.dart';
 import 'name_model.dart';
 
-class UsersModel {
+class UserModel {
   final AddressModel addressModel;
   final num id;
   final String email;
@@ -10,7 +10,7 @@ class UsersModel {
   final num v;
   final NameModel nameModel;
 
-  UsersModel(
+  UserModel(
       {required this.addressModel,
       required this.id,
       required this.email,
@@ -19,8 +19,8 @@ class UsersModel {
       required this.v,
       required this.nameModel});
 
-  factory UsersModel.fromJson(Map<String, dynamic> json) {
-    return UsersModel(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
         addressModel: AddressModel.fromJson(json["address"]),
         id: json["id"] as num? ?? 0,
         email: json["email"] as String? ?? "",

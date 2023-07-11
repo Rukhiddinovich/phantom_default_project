@@ -1,4 +1,5 @@
-import 'package:default_project/ui/home/home_screen.dart';
+import 'package:default_project/data/network/provider/api_provider.dart';
+import 'package:default_project/ui/tab_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: const HomeScreen(),
+          home: TabBox(apiProvider: ApiProvider()),
         );
       },
     );
