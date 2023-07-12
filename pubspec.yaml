@@ -140,3 +140,7 @@ flutter:
         - asset: assets/fonts/Lato/Lato-Thin.ttf
         - asset: assets/fonts/Lato/Lato-ThinItalic.ttf
 
+    - family: MetalMania
+      fonts:
+        - asset: assets/fonts/MetalMania/MetalMania-Regular.ttf
+
