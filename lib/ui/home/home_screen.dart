@@ -59,7 +59,13 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
               ),
             )
           : currencies.isEmpty
-              ? const Center(child: Text("Not Found"))
+              ? const Center(
+                  child: Text(
+                    "Not Found",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500, fontFamily: "Poppins"),
+                  ),
+                )
               : ListView(
                   physics: const BouncingScrollPhysics(),
                   children: [
