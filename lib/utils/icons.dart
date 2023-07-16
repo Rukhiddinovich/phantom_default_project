@@ -1,6 +1,5 @@
 class AppImages{
   // png
-  static const String america="assets/images/america.png";
   static const String boy="assets/images/boy.png";
   static const String boyPokemon="assets/images/boy_pokemon.png";
   static const String go="assets/images/go.png";
