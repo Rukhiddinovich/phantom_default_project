@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:default_project/data/model/pokemon_model.dart';
 import 'package:default_project/data/network/api_repository.dart';
 import 'package:default_project/data/network/api_provider.dart';
 import 'package:default_project/ui/home/info_screen.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../../data/models/pokemon_model.dart';
 import '../../utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
