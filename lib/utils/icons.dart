@@ -1,15 +1,16 @@
 class AppImages{
   // png
   static const String america="assets/images/america.png";
+  static const String boy="assets/images/boy.png";
+  static const String boyPokemon="assets/images/boy_pokemon.png";
+  static const String go="assets/images/go.png";
+  static const String pokemon="assets/images/pokemon.png";
 
 
   // svg
   static const String back="assets/svg/back.svg";
-  static const String box="assets/svg/box.svg";
-  static const String delete="assets/svg/delete.svg";
-  static const String greenPhone="assets/svg/green_phone.svg";
-  static const String person="assets/svg/person.svg";
-  static const String phone="assets/svg/phone.svg";
-  static const String sms="assets/svg/sms.svg";
-  static const String plus="assets/svg/plus.svg";
+  static const String menu="assets/svg/menu.svg";
+  static const String blue="assets/svg/blue.svg";
+  static const String yellow="assets/svg/yellow.svg";
+  static const String darkYellow="assets/svg/dark_yellow.svg";
 }
