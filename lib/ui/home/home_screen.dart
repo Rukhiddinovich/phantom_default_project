@@ -1,16 +1,21 @@
-import 'package:default_project/utils/colors.dart';
-import 'package:default_project/utils/icons.dart';
-import 'package:default_project/utils/my_utils.dart';
+import 'package:default_project/data/models/detail/one_call_data.dart';
+import 'package:default_project/ui/days_screen/days_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import '../../data/models/main/weather_main.dart';
+
+import '../../data/models/main/lat_lon.dart';
 import '../../data/models/universal_data.dart';
 import '../../data/network/api_provider.dart';
+import '../../utils/colors.dart';
+import '../../utils/icons.dart';
+import '../../utils/my_utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key, required this.latLong}) : super(key: key);
+
+  final LatLong latLong;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -18,19 +23,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<UniversalData>(
-        future: ApiProvider.getMainWeatherDataByQuery(query: "New York"),
+        future: ApiProvider.getWeatherOneCallData(
+            long: widget.latLong.long, lat: widget.latLong.lat),
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(color: Colors.black),
+              child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
             if (snapshot.data!.error.isEmpty) {
-              WeatherMainModel weatherMainModel =
-                  snapshot.data!.data as WeatherMainModel;
+              OneCallData oneCallData = snapshot.data!.data as OneCallData;
               return Stack(
                 children: [
                   Image.asset(AppImages.sky,
@@ -42,16 +52,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         children: [
                           ListTile(
-                            contentPadding: EdgeInsets.only(left: -5.w,right: 5.w),
+                            contentPadding:
+                                EdgeInsets.only(left: -5.w, right: 5.w),
                             leading: IconButton(
-                              onPressed: (){},
-                              icon: SvgPicture.asset(AppImages.search,
-                                  width: 24.w, height: 24.h),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return  SevenDaysScreen(dailyItem: oneCallData.daily,);
+                                    },
+                                  ),
+                                );
+                              },
+                              icon: SvgPicture.asset(AppImages.menu,
+                                  width: 25.w, height: 25.h),
                             ),
                             trailing: IconButton(
-                              onPressed: (){},
-                              icon: SvgPicture.asset(AppImages.menu,
-                                  width: 24.w, height: 24.h),
+                              onPressed: () {},
+                              icon: SvgPicture.asset(AppImages.search,
+                                  width: 25.w, height: 25.h),
                             ),
                           ),
                           SizedBox(height: 21.h),
@@ -79,16 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: 10.w),
                                     Text(
-                                      "${weatherMainModel.name},",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 28.sp,
-                                          fontFamily: "Poppins",
-                                          color: AppColors.C_313341),
-                                    ),
-                                    SizedBox(width: 10.w),
-                                    Text(
-                                      weatherMainModel.sysInMain.country,
+                                      "${oneCallData.timezone},",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 28.sp,
@@ -101,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Today, ${MyUtils.getDateTime(weatherMainModel.dateTime)}"
+                                      "Today, ${MyUtils.getDateTime(oneCallData.hourly[0].dt)}"
                                           .toString()
                                           .substring(0, 17),
                                       style: TextStyle(
@@ -117,10 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.network(
-                                        "https://openweathermap.org/img/wn/${weatherMainModel.weatherModel[0].icon}@2x.png",
+                                        "https://openweathermap.org/img/wn/${oneCallData.hourly[0].weather[0].icon}@2x.png",
                                         width: 120.w,
                                         height: 120.h,
-                                        fit: BoxFit.cover),
+                                        fit: BoxFit.fitHeight),
                                     Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -128,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         RichText(
                                           text: TextSpan(
                                             text:
-                                                "${(weatherMainModel.mainInMain.temp - 273.15).toInt()}\n",
+                                                "${(oneCallData.hourly[0].temp).toInt()}\n",
                                             style: TextStyle(
                                                 fontFamily: "Poppins",
                                                 fontWeight: FontWeight.w600,
@@ -136,8 +147,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 color: AppColors.C_303345),
                                             children: [
                                               TextSpan(
-                                                text: weatherMainModel
-                                                    .weatherModel[0].main,
+                                                text: oneCallData
+                                                    .hourly[0].weather[0].main,
                                                 style: TextStyle(
                                                     fontFamily: "Poppins",
                                                     fontWeight: FontWeight.w500,
@@ -188,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: AppColors.C_303345),
                                       ),
                                       trailing: Text(
-                                        "${weatherMainModel.windInMain.speed.toInt().toString()} sm",
+                                        "${oneCallData.hourly[0].windSpeed.toInt().toString()} sm",
                                         style: TextStyle(
                                             fontFamily: "Poppins",
                                             fontSize: 15.sp,
@@ -233,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: AppColors.C_303345),
                                       ),
                                       trailing: Text(
-                                        "${weatherMainModel.windInMain.speed.toString()} km/h",
+                                        "${oneCallData.hourly[0].windSpeed.toString()} km/h",
                                         style: TextStyle(
                                             fontFamily: "Poppins",
                                             fontSize: 15.sp,
@@ -278,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: AppColors.C_303345),
                                       ),
                                       trailing: Text(
-                                        "${weatherMainModel.mainInMain.humidity} %",
+                                        "${oneCallData.hourly[0].humidity} %",
                                         style: TextStyle(
                                             fontFamily: "Poppins",
                                             fontSize: 15.sp,
@@ -291,6 +302,56 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ),
                           ),
+                          SizedBox(height: 20.h),
+                          Container(
+                            width: 330.w,
+                            height: 240.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.r),
+                              gradient: const LinearGradient(
+                                colors: [Colors.white, Colors.white60],
+                              ),
+                            ),
+                            child: Expanded(
+                              child: ListView(
+                                children: [
+                                  ...List.generate(
+                                    oneCallData.hourly.length,
+                                    (index) => ListTile(
+                                      leading: Text(
+                                        MyUtils.getDateTime(oneCallData.hourly[index].dt).toString().substring(10, 16),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18.sp,
+                                            fontFamily: "Poppins",
+                                            color: AppColors.C_303345),
+                                      ),
+                                      trailing: SizedBox(
+                                        width: 125.w,
+                                        child: Row(
+                                          children: [
+                                            Image.network(
+                                              "https://openweathermap.org/img/wn/${oneCallData.hourly[index].weather[0].icon}@2x.png",
+                                            ),
+                                            Text(
+                                              "${(oneCallData.hourly[0].temp).toInt()}\n",
+                                              style: TextStyle(
+                                                  fontFamily: "Poppins",
+                                                  fontWeight:
+                                                  FontWeight.w600,
+                                                  fontSize: 18.sp,
+                                                  color:
+                                                  AppColors.C_303345),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -298,7 +359,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             }
+            return Center(
+              child: Text(snapshot.data!.error),
+            );
           }
+
           return Center(
             child: Text(snapshot.error.toString()),
           );
