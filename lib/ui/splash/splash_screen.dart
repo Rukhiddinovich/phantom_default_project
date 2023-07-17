@@ -57,9 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (context.mounted) {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomeScreen(
-          latLong: latLong!,
-        );
+        return HomeScreen();
       }));
     }
   }

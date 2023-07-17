@@ -1,5 +1,7 @@
 import 'package:default_project/data/models/detail/one_call_data.dart';
+import 'package:default_project/data/models/main/weather_main.dart';
 import 'package:default_project/ui/days_screen/days_screen.dart';
+import 'package:default_project/ui/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,22 +10,31 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../data/models/main/lat_lon.dart';
 import '../../data/models/universal_data.dart';
 import '../../data/network/api_provider.dart';
+import '../../local/storage_repository.dart';
 import '../../utils/colors.dart';
 import '../../utils/icons.dart';
 import '../../utils/my_utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, required this.latLong}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
-  final LatLong latLong;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  WeatherMainModel? weatherMainModel;
+  UniversalData? universalData;
+
+  _getData(String query) async {
+    universalData = await ApiProvider.getMainWeatherDataByQuery(query: query);
+    weatherMainModel = universalData?.data;
+  }
+
   @override
   void initState() {
+    _getData("Tashkent");
     super.initState();
   }
 
@@ -32,11 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: FutureBuilder<UniversalData>(
         future: ApiProvider.getWeatherOneCallData(
-            long: widget.latLong.long, lat: widget.latLong.lat),
+            long: weatherMainModel?.coordModel.lon ?? 0,
+            lat: weatherMainModel?.coordModel.lat ?? 0),
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Stack(
+              children:  [
+                Image.asset(AppImages.sky,
+                    width: double.infinity.w,
+                    height: double.infinity.h,
+                    fit: BoxFit.cover),
+                const Center(
+                child: CircularProgressIndicator(color: Colors.blueAccent,),
+              )],
             );
           } else if (snapshot.hasData) {
             if (snapshot.data!.error.isEmpty) {
@@ -60,7 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return  SevenDaysScreen(dailyItem: oneCallData.daily,);
+                                      return SevenDaysScreen(
+                                        dailyItem: oneCallData.daily,
+                                      );
                                     },
                                   ),
                                 );
@@ -69,7 +90,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: 25.w, height: 25.h),
                             ),
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return SearchScreen(
+                                        onSearchTap: () {
+                                          (
+                                            _getData(
+                                              StorageRepository.getString(
+                                                  "region"),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
                               icon: SvgPicture.asset(AppImages.search,
                                   width: 25.w, height: 25.h),
                             ),
@@ -99,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: 10.w),
                                     Text(
-                                      "${oneCallData.timezone},",
+                                      "${oneCallData.timezone}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 28.sp,
@@ -319,7 +358,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     oneCallData.hourly.length,
                                     (index) => ListTile(
                                       leading: Text(
-                                        MyUtils.getDateTime(oneCallData.hourly[index].dt).toString().substring(10, 16),
+                                        MyUtils.getDateTime(
+                                                oneCallData.hourly[index].dt)
+                                            .toString()
+                                            .substring(10, 16),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18.sp,
@@ -337,11 +379,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               "${(oneCallData.hourly[0].temp).toInt()}\n",
                                               style: TextStyle(
                                                   fontFamily: "Poppins",
-                                                  fontWeight:
-                                                  FontWeight.w600,
+                                                  fontWeight: FontWeight.w600,
                                                   fontSize: 18.sp,
-                                                  color:
-                                                  AppColors.C_303345),
+                                                  color: AppColors.C_303345),
                                             ),
                                           ],
                                         ),
