@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(width: 11.w),
+            SizedBox(width: 10.w),
             Expanded(
               child: ListView.builder(
                 controller: scrollController,
