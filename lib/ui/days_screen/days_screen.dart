@@ -1,3 +1,5 @@
+import 'package:default_project/data/models/detail/one_call_data.dart';
+import 'package:default_project/utils/my_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,11 +12,16 @@ class SevenDaysScreen extends StatefulWidget {
 
   final List<DailyItem>? dailyItem;
 
+
   @override
   State<SevenDaysScreen> createState() => _SevenDaysScreenState();
 }
 
 class _SevenDaysScreenState extends State<SevenDaysScreen> {
+
+
+  OneCallData oneCallData= OneCallData as OneCallData;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +35,7 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Column(
               children: [
-                SizedBox(height: 30.h),
+                SizedBox(height: 40.h),
                 Row(
                   children: [
                     IconButton(
@@ -59,12 +66,61 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
+                ),
+                Container(
+                  width: 320.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.r),
+                    gradient: const LinearGradient(
+                      colors: [Colors.white, Colors.white60],
+                    ),
+                  ),
+                  child: Expanded(
+                    child: ListView(
+                      children: [
+                        ...List.generate(
+                          oneCallData.daily.length,
+                              (index) => ListTile(
+                            leading: Text(
+                              MyUtils.getWeekday(
+                                  oneCallData.daily[index].dt.toString())
+                                  .toString()
+                                  .substring(10, 16),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18.sp,
+                                  fontFamily: "Poppins",
+                                  color: AppColors.C_303345),
+                            ),
+                            trailing: SizedBox(
+                              width: 125.w,
+                              child: Row(
+                                children: [
+                                  Image.network(
+                                    "https://openweathermap.org/img/wn/${oneCallData.daily[index].weather[0].icon}@2x.png",
+                                  ),
+                                  Text(
+                                    "${(oneCallData.daily[0].dailyTemp)}\n",
+                                    style: TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18.sp,
+                                        color: AppColors.C_303345),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

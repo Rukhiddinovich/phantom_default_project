@@ -21,13 +21,13 @@ class DailyTemp {
   });
 
   factory DailyTemp.fromJson(Map<String, dynamic> json) => DailyTemp(
-    day: (json['day'] as num?)?.toDouble() ?? 0.0,
-    min: (json['min'] as num?)?.toDouble() ?? 0.0,
-    max: (json['max'] as num?)?.toDouble() ?? 0.0,
-    eve: (json['eve'] as num?)?.toDouble() ?? 0.0,
-    morn: (json['morn'] as num?)?.toDouble() ?? 0.0,
-    night: (json['night'] as num?)?.toDouble() ?? 0.0,
-  );
+        day: (json['day'] as num?)?.toDouble() ?? 0.0,
+        min: (json['min'] as num?)?.toDouble() ?? 0.0,
+        max: (json['max'] as num?)?.toDouble() ?? 0.0,
+        eve: (json['eve'] as num?)?.toDouble() ?? 0.0,
+        morn: (json['morn'] as num?)?.toDouble() ?? 0.0,
+        night: (json['night'] as num?)?.toDouble() ?? 0.0,
+      );
 
   @override
   String toString() {

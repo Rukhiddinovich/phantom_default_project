@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../../data/models/main/lat_lon.dart';
 import '../../data/models/universal_data.dart';
 import '../../data/network/api_provider.dart';
 import '../../local/storage_repository.dart';
@@ -17,7 +16,6 @@ import '../../utils/my_utils.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -48,14 +46,17 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (BuildContext context, AsyncSnapshot<UniversalData> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Stack(
-              children:  [
+              children: [
                 Image.asset(AppImages.sky,
                     width: double.infinity.w,
                     height: double.infinity.h,
                     fit: BoxFit.cover),
                 const Center(
-                child: CircularProgressIndicator(color: Colors.blueAccent,),
-              )],
+                  child: CircularProgressIndicator(
+                    color: Colors.blueAccent,
+                  ),
+                )
+              ],
             );
           } else if (snapshot.hasData) {
             if (snapshot.data!.error.isEmpty) {
@@ -113,7 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: 25.w, height: 25.h),
                             ),
                           ),
-                          SizedBox(height: 21.h),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 18.h),
                             child: Column(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: 10.w),
                                     Text(
-                                      "${oneCallData.timezone}",
+                                      oneCallData.timezone,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 28.sp,
