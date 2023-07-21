@@ -1,41 +1,34 @@
-// import 'package:flutter/material.dart';
-//
-// class RouteNames {
-//   static const String contacts = "/";
-//   static const String addContact = "/add_contact";
-//   static const String contactDetails = "/contact_details";
-//   static const String contactUpdate = "/contact_update";
-// }
-//
-// class AppRoutes {
-//   static Route generateRoute(RouteSettings settings) {
-//     switch (settings.name) {
-//       case RouteNames.contacts:
-//         return MaterialPageRoute(builder: (context) => MyContactsScreen());
-//       case RouteNames.addContact:
-//         return MaterialPageRoute(builder: (context) {
-//           return AddContactScreen(
-//             listener: settings.arguments as VoidCallback,
-//           );
-//         });
-//       case RouteNames.contactUpdate:
-//         return MaterialPageRoute(builder: (context) => UpdateContactScreen());
-//       case RouteNames.contactDetails:
-//         return MaterialPageRoute(builder: (context) {
-//           Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
-//           return ContactDetailScreen(
-//             deleteListener: map["deleteListener"],
-//             contactModelSql: map["contactModelSql"],
-//           );
-//         });
-//       default:
-//         return MaterialPageRoute(
-//           builder: (context) => const Scaffold(
-//             body: Center(
-//               child: Text("Route mavjud emas"),
-//             ),
-//           ),
-//         );
-//     }
-//   }
-// }
+import 'package:default_project/ui/screens/screen1.dart';
+import 'package:default_project/ui/screens/screen2.dart';
+import 'package:default_project/ui/screens/screen3.dart';
+import 'package:default_project/ui/screens/screen4.dart';
+import 'package:flutter/material.dart';
+
+import '../utils/constants.dart';
+import 'home/home_screen.dart';
+
+class MyRouter {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case homeRoute:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case firstScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ScreenOne());
+      case secondScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ScreenTwo());
+      case thirdScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ScreenThree());
+      case fourthScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ScreenFour());
+
+      default:
+        return MaterialPageRoute(
+            builder: (_) => Scaffold(
+                  body: Center(
+                      child: Text('No route defined for ${settings.name}'),
+                  ),
+                ),
+        );
+    }
+  }
+}

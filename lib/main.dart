@@ -1,4 +1,5 @@
-import 'package:default_project/ui/home/home_screen.dart';
+import 'package:default_project/ui/app_routes.dart';
+import 'package:default_project/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,10 +23,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
             useMaterial3: true,
           ),
-          home: const HomeScreen(),
+          onGenerateRoute: MyRouter.generateRoute,
+          initialRoute: homeRoute,
         );
       },
     );
