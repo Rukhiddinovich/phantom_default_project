@@ -1,4 +1,3 @@
-import 'package:default_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -6,6 +5,8 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../local/storage_repository.dart';
 import '../../utils/colors.dart';
 import '../../utils/icons.dart';
+
+String query = '';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, required this.onSearchTap});
@@ -18,6 +19,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController controller = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +37,42 @@ class _SearchScreenState extends State<SearchScreen> {
                 SizedBox(height: 10.h),
                 Row(
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                          return const HomeScreen();
-                        }));
-                      },
-                      icon: Icon(Icons.arrow_back, size: 25.sp,color: Colors.black,),
+                    Container(
+                      width: 40.w,
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: Colors.white),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 25.sp,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
-                    SizedBox(width: 30.w),
-                    Text(
-                      "Search",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.sp,
-                          fontFamily: "Poppins",
-                          color: AppColors.C_303345),
+                    SizedBox(width: 10.w),
+                    Container(
+                      width: 250.w,
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: Colors.white),
+                      child: Center(
+                        child: Text(
+                          "Search",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20.sp,
+                              fontFamily: "Poppins",
+                              color: AppColors.C_303345),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -107,6 +129,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   onTap: () {
                     StorageRepository.putString("region", controller.text);
                     widget.onSearchTap.call();
+                    query = controller.text;
                     Navigator.pop(context);
                   },
                   child: Container(

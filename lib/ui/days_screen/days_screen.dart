@@ -1,5 +1,3 @@
-import 'package:default_project/data/models/detail/one_call_data.dart';
-import 'package:default_project/utils/my_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,16 +10,11 @@ class SevenDaysScreen extends StatefulWidget {
 
   final List<DailyItem>? dailyItem;
 
-
   @override
   State<SevenDaysScreen> createState() => _SevenDaysScreenState();
 }
 
 class _SevenDaysScreenState extends State<SevenDaysScreen> {
-
-
-  OneCallData oneCallData= OneCallData as OneCallData;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,15 +31,25 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                 SizedBox(height: 40.h),
                 Row(
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                          size: 25.sp,
-                        )),
+                    Container(
+                      width: 40.w,
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: Colors.white),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                            size: 25.sp,
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(width: 10.w),
                     Center(
                       child: Container(
@@ -57,7 +60,7 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                             color: Colors.white),
                         child: Center(
                           child: Text(
-                            "7 Days Weather Info",
+                            "7 Days",
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20.sp,
@@ -77,46 +80,46 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                       colors: [Colors.white, Colors.white60],
                     ),
                   ),
-                  child: Expanded(
-                    child: ListView(
-                      children: [
-                        ...List.generate(
-                          oneCallData.daily.length,
-                              (index) => ListTile(
-                            leading: Text(
-                              MyUtils.getWeekday(
-                                  oneCallData.daily[index].dt.toString())
-                                  .toString()
-                                  .substring(10, 16),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18.sp,
-                                  fontFamily: "Poppins",
-                                  color: AppColors.C_303345),
-                            ),
-                            trailing: SizedBox(
-                              width: 125.w,
-                              child: Row(
-                                children: [
-                                  Image.network(
-                                    "https://openweathermap.org/img/wn/${oneCallData.daily[index].weather[0].icon}@2x.png",
-                                  ),
-                                  Text(
-                                    "${(oneCallData.daily[0].dailyTemp)}\n",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18.sp,
-                                        color: AppColors.C_303345),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // child: Expanded(
+                  //   child: ListView(
+                  //     children: [
+                  //       ...List.generate(
+                  //         oneCallData.daily.length,
+                  //             (index) => ListTile(
+                  //           leading: Text(
+                  //             MyUtils.getWeekday(
+                  //                 oneCallData.daily[index].dt.toString())
+                  //                 .toString()
+                  //                 .substring(10, 16),
+                  //             style: TextStyle(
+                  //                 fontWeight: FontWeight.w500,
+                  //                 fontSize: 18.sp,
+                  //                 fontFamily: "Poppins",
+                  //                 color: AppColors.C_303345),
+                  //           ),
+                  //           trailing: SizedBox(
+                  //             width: 125.w,
+                  //             child: Row(
+                  //               children: [
+                  //                 Image.network(
+                  //                   "https://openweathermap.org/img/wn/${oneCallData.daily[index].weather[0].icon}@2x.png",
+                  //                 ),
+                  //                 Text(
+                  //                   "${(oneCallData.daily[0].dailyTemp)}\n",
+                  //                   style: TextStyle(
+                  //                       fontFamily: "Poppins",
+                  //                       fontWeight: FontWeight.w600,
+                  //                       fontSize: 18.sp,
+                  //                       color: AppColors.C_303345),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ),
               ],
             ),

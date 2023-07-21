@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             trailing: IconButton(
                               onPressed: () {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
@@ -204,136 +204,142 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 SizedBox(height: 20.h),
-                                Container(
-                                  width: 330.w,
-                                  height: 60.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.r),
-                                    gradient: const LinearGradient(
-                                      colors: [Colors.white, Colors.white60],
+                                ZoomTapAnimation(
+                                  child: Container(
+                                    width: 330.w,
+                                    height: 60.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.r),
+                                      gradient: const LinearGradient(
+                                        colors: [Colors.white, Colors.white60],
+                                      ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: ListTile(
-                                      leading: Container(
-                                        width: 40.w,
-                                        height: 40.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.r),
-                                            color: Colors.white),
-                                        child: Center(
-                                          child: SvgPicture.asset(
-                                              AppImages.umbrella,
-                                              width: 40.w,
-                                              height: 40.h),
+                                    child: Center(
+                                      child: ListTile(
+                                        leading: Container(
+                                          width: 40.w,
+                                          height: 40.h,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                              color: Colors.white),
+                                          child: Center(
+                                            child: SvgPicture.asset(
+                                                AppImages.umbrella,
+                                                width: 40.w,
+                                                height: 40.h),
+                                          ),
                                         ),
-                                      ),
-                                      title: Text(
-                                        "RainFall",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.sp,
-                                            fontFamily: "Poppins",
-                                            color: AppColors.C_303345),
-                                      ),
-                                      trailing: Text(
-                                        "${oneCallData.hourly[0].windSpeed.toInt().toString()} sm",
-                                        style: TextStyle(
-                                            fontFamily: "Poppins",
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.C_303345),
+                                        title: Text(
+                                          "RainFall",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              fontFamily: "Poppins",
+                                              color: AppColors.C_303345),
+                                        ),
+                                        trailing: Text(
+                                          "${oneCallData.hourly[0].windSpeed.toInt().toString()} sm",
+                                          style: TextStyle(
+                                              fontFamily: "Poppins",
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.C_303345),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 20.h),
-                                Container(
-                                  width: 330.w,
-                                  height: 60.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.r),
-                                    gradient: const LinearGradient(
-                                      colors: [Colors.white, Colors.white60],
+                                ZoomTapAnimation(
+                                  child: Container(
+                                    width: 330.w,
+                                    height: 60.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.r),
+                                      gradient: const LinearGradient(
+                                        colors: [Colors.white, Colors.white60],
+                                      ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: ListTile(
-                                      leading: Container(
-                                        width: 40.w,
-                                        height: 40.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.r),
-                                            color: Colors.white),
-                                        child: Center(
-                                          child: SvgPicture.asset(
-                                              AppImages.wind,
-                                              width: 40.w,
-                                              height: 40.h),
+                                    child: Center(
+                                      child: ListTile(
+                                        leading: Container(
+                                          width: 40.w,
+                                          height: 40.h,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                              color: Colors.white),
+                                          child: Center(
+                                            child: SvgPicture.asset(
+                                                AppImages.wind,
+                                                width: 40.w,
+                                                height: 40.h),
+                                          ),
                                         ),
-                                      ),
-                                      title: Text(
-                                        "Wind",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.sp,
-                                            fontFamily: "Poppins",
-                                            color: AppColors.C_303345),
-                                      ),
-                                      trailing: Text(
-                                        "${oneCallData.hourly[0].windSpeed.toString()} km/h",
-                                        style: TextStyle(
-                                            fontFamily: "Poppins",
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.C_303345),
+                                        title: Text(
+                                          "Wind",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              fontFamily: "Poppins",
+                                              color: AppColors.C_303345),
+                                        ),
+                                        trailing: Text(
+                                          "${oneCallData.hourly[0].windSpeed.toString()} km/h",
+                                          style: TextStyle(
+                                              fontFamily: "Poppins",
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.C_303345),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 20.h),
-                                Container(
-                                  width: 330.w,
-                                  height: 60.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.r),
-                                    gradient: const LinearGradient(
-                                      colors: [Colors.white, Colors.white60],
+                                ZoomTapAnimation(
+                                  child: Container(
+                                    width: 330.w,
+                                    height: 60.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.r),
+                                      gradient: const LinearGradient(
+                                        colors: [Colors.white, Colors.white60],
+                                      ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: ListTile(
-                                      leading: Container(
-                                        width: 40.w,
-                                        height: 40.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.r),
-                                            color: Colors.white),
-                                        child: Center(
-                                          child: SvgPicture.asset(
-                                              AppImages.humidity,
-                                              width: 40.w,
-                                              height: 40.h),
+                                    child: Center(
+                                      child: ListTile(
+                                        leading: Container(
+                                          width: 40.w,
+                                          height: 40.h,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                              color: Colors.white),
+                                          child: Center(
+                                            child: SvgPicture.asset(
+                                                AppImages.humidity,
+                                                width: 40.w,
+                                                height: 40.h),
+                                          ),
                                         ),
-                                      ),
-                                      title: Text(
-                                        "Humidity",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.sp,
-                                            fontFamily: "Poppins",
-                                            color: AppColors.C_303345),
-                                      ),
-                                      trailing: Text(
-                                        "${oneCallData.hourly[0].humidity} %",
-                                        style: TextStyle(
-                                            fontFamily: "Poppins",
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.C_303345),
+                                        title: Text(
+                                          "Humidity",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              fontFamily: "Poppins",
+                                              color: AppColors.C_303345),
+                                        ),
+                                        trailing: Text(
+                                          "${oneCallData.hourly[0].humidity} %",
+                                          style: TextStyle(
+                                              fontFamily: "Poppins",
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.C_303345),
+                                        ),
                                       ),
                                     ),
                                   ),
