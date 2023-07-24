@@ -43,8 +43,8 @@ class _ScreenFourState extends State<ScreenFour> {
                   duration: const Duration(seconds: 2),
                   curve: Curves.linear,
                   child: Container(
-                    height: 250.h,
-                    width: 250.w,
+                    height: 300.h,
+                    width: 300.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                       color: Colors.red,
@@ -85,9 +85,7 @@ class _ScreenFourState extends State<ScreenFour> {
                     Icons.swipe_left,
                     color: Colors.blue,
                   )),
-              SizedBox(
-                width: 50,
-              ),
+              SizedBox(width: 50.w),
               IconButton(
                   onPressed: () {
                     setState(() {
