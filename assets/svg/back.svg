@@ -1,10 +1,6 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_1_372)">
-        <path d="M11.71 15.29L14.3 12.7C14.69 12.31 14.69 11.68 14.3 11.29L11.71 8.7C11.08 8.08 10 8.52 10 9.41V14.58C10 15.48 11.08 15.92 11.71 15.29Z" fill="#323232"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_1_372">
-            <rect width="24" height="24" fill="white"/>
-        </clipPath>
-    </defs>
+<svg width="27" height="19" viewBox="0 0 27 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="9.33333" y="1.47827" width="16.6667" height="16.0435" rx="2" fill="black" stroke="#4DC722" stroke-width="2"/>
+    <path d="M2.26555 7.96966C1.31576 8.76884 1.31576 10.2312 2.26554 11.0303L9.49012 17.1093C10.791 18.2039 12.7778 17.279 12.7778 15.5789L12.7778 3.42108C12.7778 1.72095 10.791 0.796148 9.49012 1.89075L2.26555 7.96966Z" fill="black" stroke="#4DC722" stroke-width="2"/>
+    <rect x="10.3333" y="2.47827" width="13.037" height="14.0435" rx="1" fill="black"/>
+    <path d="M17.9858 12.6165L12.8935 7.53267L14.0099 6.40341L19.1065 11.4957L17.9858 12.6165ZM14.0099 12.6165L12.8935 11.4957L17.9858 6.40341L19.1065 7.53267L14.0099 12.6165Z" fill="#4DC722"/>
 </svg>
