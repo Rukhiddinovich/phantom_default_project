@@ -14,9 +14,13 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: const Text(
+        title: Text(
           "Users info",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 24.sp,
+              fontWeight: FontWeight.w500,
+              fontFamily: "Poppins"),
         ),
         centerTitle: true,
       ),
@@ -48,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                                   subtitle: Text(
                                     "Id: ${provider.users![index].id.toString()}",
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: Colors.blue,
                                         fontFamily: "Poppins",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w700),
@@ -56,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                                   trailing: Text(
                                     "User Id: ${provider.users![index].userId.toString()}",
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: Colors.blue,
                                         fontFamily: "Poppins",
                                         fontSize: 15.sp,
                                         fontWeight: FontWeight.w700),
