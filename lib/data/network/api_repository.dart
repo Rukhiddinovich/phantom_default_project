@@ -1,16 +1,10 @@
-import 'package:default_project/data/models/model.dart';
-import '../models/universal_response.dart';
-import 'api_provider.dart';
+import 'package:default_project/data/models/universal_response.dart';
+import 'package:default_project/data/network/api_provider.dart';
 
-class ApiRepository{
+class UserRepository {
   final ApiProvider apiProvider;
-  ApiRepository({required this.apiProvider});
 
-  Future<List<Model>> getAllData()async{
-    UniversalResponse universalResponse=await apiProvider.getAllData();
-    if(universalResponse.error.isEmpty){
-      return universalResponse.data as  List<Model>;
-    }
-    return [];
-  }
+  UserRepository({required this.apiProvider});
+
+  Future<UniversalResponse> getAllUsers() => apiProvider.getAllUsers();
 }

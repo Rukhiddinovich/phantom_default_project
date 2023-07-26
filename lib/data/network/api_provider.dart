@@ -1,25 +1,28 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:default_project/data/models/universal_response.dart';
+import 'package:default_project/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
-import '../models/model.dart';
-import '../models/universal_response.dart';
 
 class ApiProvider {
-  Future<UniversalResponse> getAllData() async {
-    Uri uri = Uri.parse(
-        "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
+  Future<UniversalResponse> getAllUsers() async {
+    Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/albums");
     try {
       http.Response response = await http.get(uri);
-
       if (response.statusCode == 200) {
         return UniversalResponse(
-            data: (jsonDecode(response.body)['pokemon'] as List?)
-                ?.map((e) => Model.fromJson(e))
+            data: (jsonDecode(response.body) as List?)
+                ?.map((e) => UserModel.fromJson(e))
                 .toList() ??
                 []);
       }
-      return UniversalResponse(error: "ERROR");
-    } catch (error) {
-      return UniversalResponse(error: error.toString());
+      return UniversalResponse(error: "Error");
+    } on SocketException {
+      return UniversalResponse(error: "Internet Error!");
+    } on FormatException {
+      return UniversalResponse(error: "Format Error!");
+    } catch (err) {
+      return UniversalResponse(error: err.toString());
     }
   }
 }
