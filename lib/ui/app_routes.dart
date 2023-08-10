@@ -1,37 +1,48 @@
-import 'package:default_project/ui/profile/profile_screen.dart';
-import 'package:default_project/ui/tab_box.dart';
+import 'package:default_project/data/models/car/car_model.dart';
+import 'package:default_project/data/models/country/model.dart';
+import 'package:default_project/ui/car_screen/car_screen.dart';
+import 'package:default_project/ui/country_screen/country_screen.dart';
+import 'package:default_project/ui/country_screen/widgets/country_detail_screen.dart';
+import 'package:default_project/ui/home/home_screen.dart';
+import 'package:default_project/ui/honda_screen/honda_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'home/news_screen.dart';
-import 'home/widgets/news_screen_detail.dart';
+import 'car_screen/widgets/car_detail_screen.dart';
 class RouteNames {
-  static const String homeScreen = "/home_screen";
-  static const String newsDetail = "/news_detail";
-  static const String profileScreen = "/profile_screen";
-  static const String tabBox = "/";
+  static const String countryScreen = "/country";
+  static const String carScreen = "/car";
+  static const String hondaScreen = "/honda";
+  static const String countryDetail = "/countryDetail";
+  static const String carDetail = "/carDetail";
+  static const String homeScreen = "/";
 }
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteNames.newsDetail:
-        return MaterialPageRoute(
-          builder: (context) {
-            Map<String,dynamic> map = settings.arguments as Map<String,dynamic>;
-            return NewsDetailScreen(newsModel: map["model"],index: map["index"],);
-          },
-        );
       case RouteNames.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const NewsScreen(),
+          builder: (context) => const HomeScreen(),
         );
-      case RouteNames.profileScreen:
+      case RouteNames.countryScreen:
         return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
+          builder: (context) => const CountryScreen(),
         );
-      case RouteNames.tabBox:
+      case RouteNames.carScreen:
         return MaterialPageRoute(
-          builder: (context) => const TabBoxScreen(),
+          builder: (context) => const CarScreen(),
+        );
+      case RouteNames.hondaScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HondaScreen(),
+        );
+      case RouteNames.countryDetail:
+        return MaterialPageRoute(
+          builder: (context) =>  CountryDetailScreen(country: settings.arguments as Country),
+        );
+      case RouteNames.carDetail:
+        return MaterialPageRoute(
+          builder: (context) =>  CarDetailScreen(car: settings.arguments as Datum),
         );
       default:
         return MaterialPageRoute(
