@@ -1,41 +1,46 @@
-// import 'package:flutter/material.dart';
-//
-// class RouteNames {
-//   static const String contacts = "/";
-//   static const String addContact = "/add_contact";
-//   static const String contactDetails = "/contact_details";
-//   static const String contactUpdate = "/contact_update";
-// }
-//
-// class AppRoutes {
-//   static Route generateRoute(RouteSettings settings) {
-//     switch (settings.name) {
-//       case RouteNames.contacts:
-//         return MaterialPageRoute(builder: (context) => MyContactsScreen());
-//       case RouteNames.addContact:
-//         return MaterialPageRoute(builder: (context) {
-//           return AddContactScreen(
-//             listener: settings.arguments as VoidCallback,
-//           );
-//         });
-//       case RouteNames.contactUpdate:
-//         return MaterialPageRoute(builder: (context) => UpdateContactScreen());
-//       case RouteNames.contactDetails:
-//         return MaterialPageRoute(builder: (context) {
-//           Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
-//           return ContactDetailScreen(
-//             deleteListener: map["deleteListener"],
-//             contactModelSql: map["contactModelSql"],
-//           );
-//         });
-//       default:
-//         return MaterialPageRoute(
-//           builder: (context) => const Scaffold(
-//             body: Center(
-//               child: Text("Route mavjud emas"),
-//             ),
-//           ),
-//         );
-//     }
-//   }
-// }
+import 'package:default_project/ui/profile/profile_screen.dart';
+import 'package:default_project/ui/tab_box.dart';
+import 'package:flutter/material.dart';
+
+import 'home/news_screen.dart';
+import 'home/widgets/news_screen_detail.dart';
+class RouteNames {
+  static const String homeScreen = "/home_screen";
+  static const String newsDetail = "/news_detail";
+  static const String profileScreen = "/profile_screen";
+  static const String tabBox = "/";
+}
+
+class AppRoutes {
+  static Route generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteNames.newsDetail:
+        return MaterialPageRoute(
+          builder: (context) {
+            Map<String,dynamic> map = settings.arguments as Map<String,dynamic>;
+            return NewsDetailScreen(newsModel: map["model"],index: map["index"],);
+          },
+        );
+      case RouteNames.homeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NewsScreen(),
+        );
+      case RouteNames.profileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
+        );
+      case RouteNames.tabBox:
+        return MaterialPageRoute(
+          builder: (context) => const TabBoxScreen(),
+        );
+      default:
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(
+              child: Text("Route not found!"),
+            ),
+          ),
+        );
+    }
+  }
+}

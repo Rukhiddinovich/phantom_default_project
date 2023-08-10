@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "231894123329",
+    "project_id": "notification-99e2e",
+    "storage_bucket": "notification-99e2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231894123329:android:5fcd567b760b9f463997c0",
+        "android_client_info": {
+          "package_name": "uz.news.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231894123329-f0oae1op00lpvefnjtldc9l52n32b4l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJoomxKTyOwKwxUaAWMESsg3fXlDcVsag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231894123329-f0oae1op00lpvefnjtldc9l52n32b4l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

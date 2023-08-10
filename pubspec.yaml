@@ -14,7 +14,15 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.2
+  change_app_package_name: ^1.1.0
+  cupertino_icons: ^1.0.5
+  firebase_core: ^2.15.0
+  cloud_firestore: ^4.8.3
+  firebase_messaging: ^14.6.5
+  firebase_auth: ^4.7.1
+  firebase_storage: ^11.2.5
+  google_sign_in: ^6.1.4
+  flutter_facebook_auth: ^6.0.0
   flutter_svg: ^2.0.6
   flutter_screenutil: ^5.8.4
   easy_localization: ^3.0.2
@@ -22,6 +30,15 @@ dependencies:
   zoom_tap_animation: ^1.1.0
   http: ^1.1.0
   cached_network_image: ^3.2.3
+  provider: ^6.0.5
+  lottie: ^2.5.0
+  image_picker: ^1.0.1
+  like_button: ^2.0.5
+  curved_navigation_bar: ^1.0.3
+  flutter_local_notifications: ^15.1.0+1
+  carousel_slider: ^4.2.1
+  photo_view: ^0.14.0
+
 
 
 dev_dependencies:
@@ -42,6 +59,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/translations/
+    - assets/lotties/
 
 
   fonts:
