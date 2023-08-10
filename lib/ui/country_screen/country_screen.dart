@@ -32,7 +32,6 @@ class _CountryScreenState extends State<CountryScreen> {
   @override
   void initState() {
     _getData();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -73,10 +72,6 @@ class _CountryScreenState extends State<CountryScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16.r),
                                 color: Colors.teal,
-                                // boxShadow: [
-                                //   BoxShadow(
-                                //       color: Colors.black, blurRadius: 5.r)
-                                // ],
                               ),
                               child: ListTile(
                                 onTap: () {

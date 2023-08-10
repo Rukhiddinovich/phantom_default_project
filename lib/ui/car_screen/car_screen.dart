@@ -33,7 +33,6 @@ class _CarScreenState extends State<CarScreen> {
   @override
   void initState() {
     _getData();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -86,7 +85,7 @@ class _CarScreenState extends State<CarScreen> {
                                   style: TextStyle(fontSize: 20.sp,color: Colors.white,fontFamily: "Poppins"),
                                 ),
                                 leading: CachedNetworkImage(
-                                  imageUrl: carModel!.data[index].log,
+                                  imageUrl: carModel!.data[index].logo,
                                   width: 50.w,
                                   height: 50.h,
                                   placeholder: (context, url) =>
