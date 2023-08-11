@@ -6,11 +6,10 @@ class Continent {
 
   factory Continent.fromJson(Map<String, dynamic> json) {
     return Continent(
-        code: json["code"] as String? ?? "",
-        name: json["name"] as String? ?? "");
+      code: json["code"] as String? ?? "",
+      name: json["name"] as String? ?? "",
+    );
   }
-  Map<String, dynamic> toJson() => {
-    "code":code,
-    "name":name
-  };
+
+  Map<String, dynamic> toJson() => {"code": code, "name": name};
 }

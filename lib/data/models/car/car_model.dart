@@ -40,11 +40,11 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    id: json["id"],
-    carModel: json["car_model"],
-    averagePrice: json["average_price"],
-    logo: json["logo"],
-    establishedYear: json["established_year"],
+    id: json["id"]as int? ?? 0,
+    carModel: json["car_model"]as String? ?? "",
+    averagePrice: json["average_price"]as int? ?? 0,
+    logo: json["logo"]as String? ?? "",
+    establishedYear: json["established_year"]as int? ?? 0,
   );
 
   Map<String, dynamic> toJson() => {

@@ -27,7 +27,4 @@ class CountryModel {
       emoji: json["emoji"] as String? ?? "",
     );
   }
-  // Map<String, dynamic> toJson() => {
-  //
-  // };
 }
