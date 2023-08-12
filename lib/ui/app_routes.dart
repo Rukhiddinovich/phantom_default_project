@@ -8,6 +8,7 @@ import 'package:default_project/ui/honda_screen/honda_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'car_screen/widgets/car_detail_screen.dart';
+
 class RouteNames {
   static const String countryScreen = "/country";
   static const String carScreen = "/car";
@@ -38,11 +39,13 @@ class AppRoutes {
         );
       case RouteNames.countryDetail:
         return MaterialPageRoute(
-          builder: (context) =>  CountryDetailScreen(country: settings.arguments as Country),
+          builder: (context) =>
+              CountryDetailScreen(country: settings.arguments as Country),
         );
       case RouteNames.carDetail:
         return MaterialPageRoute(
-          builder: (context) =>  CarDetailScreen(car: settings.arguments as Datum),
+          builder: (context) =>
+              CarDetailScreen(car: settings.arguments as Datum),
         );
       default:
         return MaterialPageRoute(

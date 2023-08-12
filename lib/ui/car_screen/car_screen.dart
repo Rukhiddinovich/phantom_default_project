@@ -82,7 +82,10 @@ class _CarScreenState extends State<CarScreen> {
                                 },
                                 title: Text(
                                   carModel!.data[index].carModel,
-                                  style: TextStyle(fontSize: 20.sp,color: Colors.white,fontFamily: "Poppins"),
+                                  style: TextStyle(
+                                      fontSize: 20.sp,
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
                                 ),
                                 leading: CachedNetworkImage(
                                   imageUrl: carModel!.data[index].logo,
