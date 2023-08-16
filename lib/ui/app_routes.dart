@@ -1,20 +1,13 @@
-import 'package:default_project/data/models/car/car_model.dart';
-import 'package:default_project/data/models/country/model.dart';
-import 'package:default_project/ui/car_screen/car_screen.dart';
-import 'package:default_project/ui/country_screen/country_screen.dart';
-import 'package:default_project/ui/country_screen/widgets/country_detail_screen.dart';
+import 'package:default_project/ui/flag_uzb/flag_uzb_screen.dart';
 import 'package:default_project/ui/home/home_screen.dart';
-import 'package:default_project/ui/honda_screen/honda_screen.dart';
+import 'package:default_project/ui/snowman/snowman_screen.dart';
+import 'package:default_project/ui/stickers/stickers_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'car_screen/widgets/car_detail_screen.dart';
-
 class RouteNames {
-  static const String countryScreen = "/country";
-  static const String carScreen = "/car";
-  static const String hondaScreen = "/honda";
-  static const String countryDetail = "/countryDetail";
-  static const String carDetail = "/carDetail";
+  static const String flagScreen = "/flag";
+  static const String stickersScreen = "/stickers";
+  static const String snowmanScreen = "/snowmanScreen";
   static const String homeScreen = "/";
 }
 
@@ -25,27 +18,18 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         );
-      case RouteNames.countryScreen:
+      case RouteNames.flagScreen:
         return MaterialPageRoute(
-          builder: (context) => const CountryScreen(),
+          builder: (context) => const FlagUzbScreen(),
         );
-      case RouteNames.carScreen:
+      case RouteNames.stickersScreen:
         return MaterialPageRoute(
-          builder: (context) => const CarScreen(),
+          builder: (context) => const StickersScreen(),
         );
-      case RouteNames.hondaScreen:
-        return MaterialPageRoute(
-          builder: (context) => const HondaScreen(),
-        );
-      case RouteNames.countryDetail:
+      case RouteNames.snowmanScreen:
         return MaterialPageRoute(
           builder: (context) =>
-              CountryDetailScreen(country: settings.arguments as Country),
-        );
-      case RouteNames.carDetail:
-        return MaterialPageRoute(
-          builder: (context) =>
-              CarDetailScreen(car: settings.arguments as Datum),
+              const SnowmanScreen(),
         );
       default:
         return MaterialPageRoute(

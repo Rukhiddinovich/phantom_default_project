@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.teal),
-        backgroundColor: Colors.teal,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.lightBlueAccent),
+        backgroundColor: Colors.lightBlueAccent,
         title: Text(
           "Menu Screen",
           style: TextStyle(
@@ -34,16 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 150.h),
           ZoomTapAnimation(
             onTap: (){
-              Navigator.pushNamed(context, RouteNames.countryScreen);
+              Navigator.pushNamed(context, RouteNames.flagScreen);
             },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 90.r),
               height: 40.h,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r), color: Colors.teal),
+                  borderRadius: BorderRadius.circular(16.r), color: Colors.lightBlueAccent),
               child: Center(
                 child: Text(
-                  "Country Screen",
+                  "Flag Uzbekistan",
                   style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -56,16 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 90.h),
           ZoomTapAnimation(
             onTap: (){
-              Navigator.pushNamed(context, RouteNames.carScreen);
+              Navigator.pushNamed(context, RouteNames.snowmanScreen);
             },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 90.r),
               height: 40.h,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r), color: Colors.teal),
+                  borderRadius: BorderRadius.circular(16.r), color: Colors.lightBlueAccent),
               child: Center(
                 child: Text(
-                  "Car Screen",
+                  "Snowman",
                   style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -78,16 +78,16 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 90.h),
           ZoomTapAnimation(
             onTap: (){
-              Navigator.pushNamed(context, RouteNames.hondaScreen);
+              Navigator.pushNamed(context, RouteNames.stickersScreen);
             },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 90.r),
               height: 40.h,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r), color: Colors.teal),
+                  borderRadius: BorderRadius.circular(16.r), color: Colors.lightBlueAccent),
               child: Center(
                 child: Text(
-                  "Honda Screen",
+                  "Stickers",
                   style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
