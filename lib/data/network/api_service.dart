@@ -16,15 +16,15 @@ class ApiService {
     dio.interceptors.add(
       InterceptorsWrapper(
         onError: (error, handler) async {
-          debugPrint("ERRORGA KIRDI:${error.message} and ${error.response}");
+          debugPrint("ENTERED ERROR:${error.message} and ${error.response}");
           return handler.next(error);
         },
         onRequest: (requestOptions, handler) async {
-          debugPrint("SO'ROV  YUBORILDI :${handler.isCompleted}");
+          debugPrint("REQUEST SENT :${handler.isCompleted}");
           return handler.next(requestOptions);
         },
         onResponse: (response, handler) async {
-          debugPrint("JAVOB  KELDI :${handler.isCompleted}");
+          debugPrint("THE ANSWER HAS COME :${handler.isCompleted}");
           return handler.next(response);
         },
       ),

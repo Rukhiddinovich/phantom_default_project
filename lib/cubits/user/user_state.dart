@@ -5,12 +5,12 @@ abstract class UserState extends Equatable {}
 
 class UserInitial extends UserState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class UserLoadingState extends UserState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class UserSuccessState extends UserState {
@@ -19,7 +19,7 @@ class UserSuccessState extends UserState {
   UserSuccessState({required this.userModels});
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class UserErrorState extends UserState {
@@ -28,5 +28,5 @@ class UserErrorState extends UserState {
   UserErrorState({required this.errorText});
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }

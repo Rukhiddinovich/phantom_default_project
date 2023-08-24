@@ -13,16 +13,14 @@ class UserCubit extends Cubit<UserState> {
 
   final UserRepository userRepository;
 
-  Future<void>getAllUsers()async{
+  Future<void> getAllUsers() async {
     emit(UserLoadingState());
 
-    UniversalData universalData=await userRepository.getAllHomework();
-    if(universalData.error.isEmpty){
+    UniversalData universalData = await userRepository.getAllHomework();
+    if (universalData.error.isEmpty) {
       emit(UserSuccessState(userModels: universalData.data as List<UserModel>));
-    }else{
+    } else {
       emit(UserErrorState(errorText: universalData.error));
     }
   }
-
-
 }
