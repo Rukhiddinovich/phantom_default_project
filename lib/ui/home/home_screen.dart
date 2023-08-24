@@ -59,52 +59,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           BoxShadow(color: Colors.teal, blurRadius: 5.r),
                         ],
                       ),
-                      child: Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            children: [
-                              SizedBox(
-                                width: 70.w,
-                                height: 70.h,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(16.r),
-                                  child: CachedNetworkImage(
-                                    imageUrl: userModel.avatarUrl,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                userModel.state,
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                    color: Colors.white),
-                              ),
-                            ],
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16.r),
+                            child: CachedNetworkImage(
+                              imageUrl: userModel.avatarUrl,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          SizedBox(width: 50.w),
-                          Column(
-                            children: [
-                              Text(
-                                userModel.username,
-                                style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                    color: Colors.white),
-                              ),
-                              SizedBox(height: 5.h),
-                              Text(
-                                userModel.name,
-                                style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                    color: Colors.white),
-                              ),
-                            ],
+                          SizedBox(height: 5.h),
+                          Text(
+                            "State: ${userModel.state}",
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins",
+                                color: Colors.white),
+                          ),
+                          SizedBox(height: 5.h),
+                          Text(
+                            "Username: ${userModel.username}",
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins",
+                                color: Colors.white),
+                          ),
+                          SizedBox(height: 5.h),
+                          Text(
+                            "Name: ${userModel.name}",
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins",
+                                color: Colors.white),
                           ),
                         ],
                       ),
