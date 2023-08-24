@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:default_project/cubits/user/user_cubit.dart';
 import 'package:default_project/data/models/user_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,31 +60,54 @@ class _HomeScreenState extends State<HomeScreen> {
                           BoxShadow(color: Colors.teal, blurRadius: 5.r),
                         ],
                       ),
-                      child: ListTile(
-                        leading: SizedBox(
-                            height: 60.h,
-                            width: 60.w,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16.r),
-                              child: CachedNetworkImage(
-                                fit: BoxFit.cover,
-                                imageUrl: userModel.avatarUrl,
-                                placeholder: (context, url) =>
-                                    const CupertinoActivityIndicator(
-                                        color: Colors.black),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              SizedBox(
+                                width: 70.w,
+                                height: 70.h,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16.r),
+                                  child: CachedNetworkImage(
+                                    imageUrl: userModel.avatarUrl,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                            ),
-                        ),
-                        title: Text(
-                          userModel.username,
-                          style: TextStyle(
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.sp,
-                              color: Colors.white),
-                        ),
+                              Text(
+                                userModel.state,
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Poppins",
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 50.w),
+                          Column(
+                            children: [
+                              Text(
+                                userModel.username,
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Poppins",
+                                    color: Colors.white),
+                              ),
+                              SizedBox(height: 5.h),
+                              Text(
+                                userModel.name,
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Poppins",
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     );
                   },
