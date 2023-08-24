@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:default_project/data/models/universal_data.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../data/models/user_model.dart';

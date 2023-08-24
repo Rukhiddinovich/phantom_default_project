@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../utils/ui_utils/error_message_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -118,6 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        },
+        buildWhen: (previous, current){
+          return previous!=current;
         },
         listener: (context, state) {
           if (state is UserErrorState) {

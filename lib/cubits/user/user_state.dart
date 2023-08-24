@@ -1,20 +1,32 @@
 part of 'user_cubit.dart';
 
 @immutable
-abstract class UserState {}
+abstract class UserState extends Equatable {}
 
-class UserInitial extends UserState {}
+class UserInitial extends UserState {
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}
 
-class UserLoadingState extends UserState {}
+class UserLoadingState extends UserState {
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}
 
 class UserSuccessState extends UserState {
   List<UserModel> userModels;
 
   UserSuccessState({required this.userModels});
+
+  @override
+  List<Object?> get props => throw UnimplementedError();
 }
 
 class UserErrorState extends UserState {
   final String errorText;
 
   UserErrorState({required this.errorText});
+
+  @override
+  List<Object?> get props => throw UnimplementedError();
 }
