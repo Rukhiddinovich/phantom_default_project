@@ -1,16 +1,43 @@
+import 'package:default_project/cubits/user/user_cubit.dart';
+import 'package:default_project/data/repository/user/user_repository.dart';
 import 'package:default_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'data/network/api_service.dart';
 
+Future<void> main() async {
+  runApp(App(apiService: ApiService()));
+}
 
-Future<void> main()async {
-  runApp(const MyApp());
+class App extends StatelessWidget {
+  const App({super.key, required this.apiService});
+
+  final ApiService apiService;
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+            create: (context) => UserRepository(apiService: apiService),
+            lazy: true)
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) => UserCubit(context.read<UserRepository>()),
+              lazy: true),
+        ],
+        child: const MyApp(),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -18,7 +45,6 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
-
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
