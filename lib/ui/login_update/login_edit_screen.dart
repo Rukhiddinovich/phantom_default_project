@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class LoginUpdateScreen extends StatefulWidget {
+  const LoginUpdateScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LoginUpdateScreen> createState() => _LoginUpdateScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginUpdateScreenState extends State<LoginUpdateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Home Screen",
+          "Login Edit",
           style: TextStyle(
               fontSize: 24.sp,
               fontWeight: FontWeight.w500,

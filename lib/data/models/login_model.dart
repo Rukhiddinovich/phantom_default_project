@@ -1,19 +1,19 @@
-class UserModel {
+class LoginModel {
   final int id;
   final String username;
   final String name;
   final String state;
   final String avatarUrl;
 
-  UserModel(
+  LoginModel(
       {required this.state,
       required this.username,
       required this.name,
       required this.id,
       required this.avatarUrl});
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory LoginModel.fromJson(Map<String, dynamic> json) {
+    return LoginModel(
         state: json["state"] as String? ?? "",
         username: json["username"] as String? ?? "",
         name: json["name"] as String? ?? "",
