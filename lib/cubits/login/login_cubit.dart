@@ -52,9 +52,11 @@ class LoginCubit extends Cubit<LoginState> {
       {required String name,
       required String phone,
       required String username,
+      required String token,
       required String password}) async {
     emit(LoginLoadingState());
     UniversalData universalData = await loginRepository.loginEdit(
+      token: token,
         name: name, phone: phone, username: username, password: password);
     if (universalData.error.isEmpty) {
       emit(LoginUpdateSuccessState());

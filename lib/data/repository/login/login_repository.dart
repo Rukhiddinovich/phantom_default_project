@@ -16,9 +16,14 @@ class LoginRepository {
       {required String name,
       required String phone,
       required String username,
+      required String token,
       required String password}) async {
     return apiService.loginEdit(
-        name: name, phone: phone, username: username, password: password);
+        name: name,
+        phone: phone,
+        username: username,
+        password: password,
+        token: token);
   }
 
   Future<UniversalData> getUser() async {

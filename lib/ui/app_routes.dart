@@ -1,6 +1,6 @@
 import 'package:default_project/ui/home/home_screen.dart';
 import 'package:default_project/ui/login/login_screen.dart';
-import 'package:default_project/ui/login_update/login_edit_screen.dart';
+import 'package:default_project/ui/login_update/login_update_screen.dart';
 import 'package:default_project/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 

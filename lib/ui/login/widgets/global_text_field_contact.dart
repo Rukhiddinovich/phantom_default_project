@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../utils/colors.dart';
 
-class GlobalTextField extends StatelessWidget {
-  GlobalTextField({
+class GlobalTextFieldContact extends StatelessWidget {
+  GlobalTextFieldContact({
     Key? key,
     required this.hintText,
     required this.keyboardType,
@@ -23,6 +24,11 @@ class GlobalTextField extends StatelessWidget {
   final bool obscureText;
   final TextEditingController controller;
   final int maxLine;
+
+  var maskFormatter = MaskTextInputFormatter(
+      mask: "+998 (##) ###-##-##",
+      filter: {'#': RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.eager);
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +57,7 @@ class GlobalTextField extends StatelessWidget {
         keyboardType: keyboardType,
         obscureText: obscureText,
         controller: controller,
+        inputFormatters: [maskFormatter],
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           filled: true,

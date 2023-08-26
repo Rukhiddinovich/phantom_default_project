@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'data/network/api_service.dart';
+import 'local/storage_repository/storage_repository.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageRepository.getInstance();
+
   runApp(App(apiService: ApiService()));
 }
 
@@ -48,7 +52,6 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.light,
           initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
         );

@@ -50,6 +50,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/translations/
+    - assets/lotties/
 
 
   fonts:

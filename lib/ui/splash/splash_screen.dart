@@ -1,4 +1,5 @@
 import 'package:default_project/cubits/login/login_cubit.dart';
+import 'package:default_project/local/storage_repository/storage_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
         },
         listener: (context, state) {
           if (state is LoginUnLoggedState) {
-            Navigator.pushReplacementNamed(context, RouteNames.loginScreen);
+            if (StorageRepository.getString("username").isNotEmpty) {
+              Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
+            }else{
+            Navigator.pushReplacementNamed(context, RouteNames.loginScreen);}
           }
           if (state is LoggedState) {
             Navigator.pushReplacementNamed(context, RouteNames.homeScreen);

@@ -69,22 +69,32 @@ class ApiService {
 
   Future<UniversalData> loginEdit(
       {required String name,
-      required String phone,
-      required String username,
-      required String password}) async {
+        required String phone,
+        required String username,
+        required String password,
+        required String token}) async {
     Response response;
-    String token = StorageRepository.getString("token");
     try {
       response = await _dio.post("/auth/users/first/edit",
-          options: Options(headers: {"Authorization": "Bearer Token:$token"}));
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $token",
+              "Content-Type": "application/json"
+            },
+          ),
+          data: {
+            "name": name,
+            "phone": phone,
+            "username": username,
+            "password": password
+          });
       if ((response.statusCode! >= 200) && (response.statusCode! < 300)) {
         return UniversalData(data: LoginModel.fromJson(response.data));
-      //   Model boshqa yozilishi kerak
       }
       return UniversalData(error: "Other Error");
     } on DioException catch (e) {
       if (e.response != null) {
-        return UniversalData(error: e.response!.data["message"]);
+        return UniversalData(error: e.response!.data["error"].toString());
       } else {
         return UniversalData(error: e.message!);
       }
