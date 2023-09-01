@@ -1,4 +1,6 @@
+import 'package:default_project/ui/app_routes.dart';
 import 'package:default_project/ui/home/home_screen.dart';
+import 'package:default_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,11 +23,11 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-            useMaterial3: true,
-          ),
-          home: const HomeScreen(),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.light,
+          initialRoute: RouteNames.home,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
