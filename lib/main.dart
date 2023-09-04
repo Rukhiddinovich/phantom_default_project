@@ -1,18 +1,15 @@
 import 'package:default_project/ui/app_routes.dart';
-import 'package:default_project/ui/home/home_screen.dart';
 import 'package:default_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-Future<void> main()async {
+Future<void> main() async {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -20,13 +17,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
-
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          initialRoute: RouteNames.home,
+          initialRoute: RouteNames.musicScreen,
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },

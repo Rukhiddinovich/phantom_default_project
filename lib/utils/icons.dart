@@ -1,4 +1,4 @@
-class AppImages{
+class AppIcons{
   // png
   static const String america="assets/images/america.png";
 

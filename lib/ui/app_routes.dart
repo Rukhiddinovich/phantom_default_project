@@ -1,23 +1,28 @@
-import 'package:default_project/ui/home/home_screen.dart';
+import 'package:default_project/ui/file/read_all_files.dart';
+import 'package:default_project/ui/music/music_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteNames {
-  static const String home = "/";
-  static const String addContact = "/add_contact";
-  static const String contactDetails = "/contact_details";
-  static const String contactUpdate = "/contact_update";
+  static const String musicScreen = "/";
+  static const String  musicFile= "/music_file";
 }
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteNames.home:
-        return MaterialPageRoute(builder: (context) => HomeScreen());
+      case RouteNames.musicFile:
+        return MaterialPageRoute(
+          builder: (context) => const MusicFile(),
+        );
+      case RouteNames.musicScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MusicScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
             body: Center(
-              child: Text("Route mavjud emas"),
+              child: Text("Route not found!"),
             ),
           ),
         );
