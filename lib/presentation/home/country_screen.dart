@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:default_project/presentation/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
 import '../../bloc/country_bloc.dart';
 import '../../bloc/country_state.dart';
 
@@ -56,11 +54,11 @@ class _CountryScreenState extends State<CountryScreen> {
                           right: 24.w, bottom: 2.h, top: 2.h, left: 2.w),
                       margin: EdgeInsets.all(10.r),
                       decoration: BoxDecoration(
-                          color: Colors.teal,
-                          borderRadius: BorderRadius.circular(16.r),
-                          boxShadow: [
-                            BoxShadow(color: Colors.black, blurRadius: 5.r)
-                          ],
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(16.r),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black, blurRadius: 5.r)
+                        ],
                       ),
                       child: Row(
                         children: [
