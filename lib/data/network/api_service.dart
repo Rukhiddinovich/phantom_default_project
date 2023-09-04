@@ -1,4 +1,4 @@
-import 'package:default_project/data/models/user_model.dart';
+import 'package:default_project/data/models/year_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import '../../utils/constants.dart';
@@ -50,7 +50,7 @@ class ApiService {
       if ((response.statusCode! >= 200) && (response.statusCode! < 300)) {
         return UniversalData(
             data: (response.data as List?)
-                ?.map((e) => UserModel.fromJson(e))
+                ?.map((e) => YearModel.fromJson(e))
                 .toList() ??
                 []);
       }

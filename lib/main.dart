@@ -1,4 +1,4 @@
-import 'package:default_project/cubits/user/user_cubit.dart';
+import 'package:default_project/cubits/user/year_cubit.dart';
 import 'package:default_project/data/repository/user/user_repository.dart';
 import 'package:default_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +26,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => UserCubit(context.read<UserRepository>()),
+              create: (context) => YearCubit(context.read<UserRepository>()),
               lazy: true),
         ],
         child: const MyApp(),

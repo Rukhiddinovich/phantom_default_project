@@ -2,7 +2,7 @@ const String adminEmail = "admin@gmail.com";
 
 const defaultImageConstant = "Select Image";
 
-const baseUrl = "http://159.89.98.34:5545/";
+const baseUrl = "https://jsonkeeper.com/b/92TT";
 const baseUrlForImage = "http://159.89.98.34:5545";
 
 

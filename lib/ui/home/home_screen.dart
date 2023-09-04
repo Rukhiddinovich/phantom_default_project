@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:default_project/cubits/user/user_cubit.dart';
-import 'package:default_project/data/models/user_model.dart';
+import 'package:default_project/cubits/user/year_cubit.dart';
+import 'package:default_project/cubits/user/year_state.dart';
+import 'package:default_project/data/models/year_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    BlocProvider.of<UserCubit>(context).getAllUsers();
+    BlocProvider.of<YearCubit>(context).getAllUsers();
     super.initState();
   }
 
@@ -39,15 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body: BlocConsumer<UserCubit, UserState>(
+      body: BlocConsumer<YearCubit, YearState>(
         builder: (context, state) {
-          if (state is UserSuccessState) {
+          if (state is YearSuccessState) {
             return ListView(
               children: [
                 ...List.generate(
-                  state.userModels.length,
+                  state.yearModels.length,
                   (index) {
-                    UserModel userModel = state.userModels[index];
+                    YearModel yearModel = state.yearModels[index];
                     return Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 15.w, vertical: 10.h),
@@ -62,16 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(16.r),
-                            child: CachedNetworkImage(
-                              imageUrl: userModel.avatarUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
                           SizedBox(height: 5.h),
                           Text(
-                            "State: ${userModel.state}",
+                            yearModel.year.toString(),
                             style: TextStyle(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
@@ -80,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           SizedBox(height: 5.h),
                           Text(
-                            "Username: ${userModel.username}",
+                            yearModel.month.toString(),
                             style: TextStyle(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
@@ -89,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           SizedBox(height: 5.h),
                           Text(
-                            "Name: ${userModel.name}",
+                            yearModel.daysModel.toString(),
                             style: TextStyle(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.w500,
@@ -112,10 +105,10 @@ class _HomeScreenState extends State<HomeScreen> {
           return previous!=current;
         },
         listener: (context, state) {
-          if (state is UserErrorState) {
+          if (state is YearErrorState) {
             showErrorMessage(message: state.errorText, context: context);
           }
-          if (state is UserLoadingState) {
+          if (state is YearLoadingState) {
             const Center(child: CircularProgressIndicator());
           }
         },
