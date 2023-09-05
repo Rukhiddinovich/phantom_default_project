@@ -1,5 +1,5 @@
 import 'package:default_project/cubits/user/year_cubit.dart';
-import 'package:default_project/data/repository/user/user_repository.dart';
+import 'package:default_project/data/repository/year/year_repository.dart';
 import 'package:default_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,13 +20,13 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-            create: (context) => UserRepository(apiService: apiService),
+            create: (context) => YearRepository(apiService: apiService),
             lazy: true)
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => YearCubit(context.read<UserRepository>()),
+              create: (context) => YearCubit(context.read<YearRepository>()),
               lazy: true),
         ],
         child: const MyApp(),

@@ -31,11 +31,11 @@ class ApiService {
     );
   }
 
-  Future<UniversalData> getAllUsers() async {
+  Future<UniversalData> getAllData() async {
     Response response;
     final dio1 = Dio(
       BaseOptions(
-        baseUrl: "https://fifth-exam.free.mockoapp.net",
+        baseUrl: baseUrl,
         headers: {
           "Content-Type": "application/json",
         },
@@ -45,7 +45,7 @@ class ApiService {
       ),
     );
     try {
-      response = await dio1.get('/users');
+      response = await dio1.get(baseUrl);
 
       if ((response.statusCode! >= 200) && (response.statusCode! < 300)) {
         return UniversalData(

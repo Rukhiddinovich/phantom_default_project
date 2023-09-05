@@ -101,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircularProgressIndicator(),
           );
         },
-        buildWhen: (previous, current){
-          return previous!=current;
+        buildWhen: (previous, current) {
+          return previous != current;
         },
         listener: (context, state) {
           if (state is YearErrorState) {
