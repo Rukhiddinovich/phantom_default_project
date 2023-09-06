@@ -1,4 +1,4 @@
-import 'definition_model.dart';
+import 'package:default_project/data/models/dictionary_model/definition_model.dart';
 
 class MeaningModel {
   String partOfSpeech;

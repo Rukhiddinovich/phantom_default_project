@@ -1,4 +1,4 @@
-import 'package:default_project/data/models/phonetic_model.dart';
+import 'package:default_project/data/models/dictionary_model/phonetic_model.dart';
 import 'license_model.dart';
 import 'meaning_model.dart';
 

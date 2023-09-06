@@ -1,7 +1,7 @@
 class UniversalData {
   UniversalData({
-    this.error = "",
     this.data,
+    this.error = "",
     this.statusCode = 0,
   });
 

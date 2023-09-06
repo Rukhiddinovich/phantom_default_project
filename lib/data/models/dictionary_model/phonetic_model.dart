@@ -1,4 +1,4 @@
-import 'license_model.dart';
+import 'package:default_project/data/models/dictionary_model/license_model.dart';
 
 class PhoneticModel {
   String text;

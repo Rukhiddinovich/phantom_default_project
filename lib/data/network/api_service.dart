@@ -1,4 +1,4 @@
-import 'package:default_project/data/models/dictionary_model.dart';
+import 'package:default_project/data/models/dictionary_model/dictionary_model.dart';
 import 'package:default_project/data/models/universal_data.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,7 +53,7 @@ class ApiService {
       return UniversalData(error: "Other Error");
     } on DioException catch (e) {
       if (e.response != null) {
-        return UniversalData(error: e.response!.data["error"]);
+        return UniversalData(error: e.response!.data["message"]);
       } else {
         return UniversalData(error: e.message!);
       }

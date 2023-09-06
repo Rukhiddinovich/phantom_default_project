@@ -1,4 +1,4 @@
-import 'package:default_project/data/models/dictionary_model.dart';
+import 'package:default_project/data/models/dictionary_model/dictionary_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../utils/ui_utils/error_message_dialog.dart';
