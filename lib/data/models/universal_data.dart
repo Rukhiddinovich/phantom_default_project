@@ -2,7 +2,7 @@ class UniversalData {
   UniversalData({
     this.error = "",
     this.data,
-    this.statusCode=0,
+    this.statusCode = 0,
   });
 
   dynamic data;
