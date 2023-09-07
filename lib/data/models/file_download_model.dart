@@ -51,21 +51,21 @@ List<FileDownloadModel> filesData = [
   ),
   const FileDownloadModel(
     progress: 0.0,
-    fileName: "Sabyan ya Rohman",
+    fileName: "Music",
     fileUrl:
         "https://muzzona.kz/upload/files/2020-12/sabyan-gambus-rohman-ya-rohman_(muzzona.kz).mp3",
     memory: 3,
   ),
   const FileDownloadModel(
     progress: 0.0,
-    fileName: "Ajoyib rasm",
+    fileName: "Picture",
     fileUrl:
         "https://odam.uz/upload/media/posts/2019-10/21/mashhur-suratkash-ajoyib-rasm-olish-sirlarini-oshkor-qildi_1571694997-b.jpg",
     memory: 1.2,
   ),
   const FileDownloadModel(
     progress: 0.0,
-    fileName: "Foydali file",
+    fileName: "File",
     fileUrl:
         "https://foydali-fayllar.uz/wp-content/uploads/2021/04/informatika-test.doc.zip",
     memory: 2.3,
@@ -78,7 +78,7 @@ List<FileDownloadModel> filesData = [
         "http://fayllar1.ru/23/Seriallar/Grim/Grim%20f01q08-qism%20AQSH%20seriali%20O'zbek%20tilida%20(asilmedia.net).m4v",
   ),
   const FileDownloadModel(
-      fileName: "ShoshMaqom",
+      fileName: "Maqom",
       fileUrl: "http://www.classicmusic.uz/media/Shashmaqom/history-&-modernity_1/The%20Keepers%20of%20Maqom%20traditions.wmv",
       progress: 0.0,
       memory: 81.67,

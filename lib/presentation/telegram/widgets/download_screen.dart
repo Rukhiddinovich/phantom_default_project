@@ -82,10 +82,13 @@ class DownloadScreen extends StatelessWidget {
             height: double.infinity,
           ),
           ListView(
-            children: List.generate(filesData.length, (index) {
-              var singleFile = filesData[index];
-              return TelegramScreen(fileInfo: singleFile);
-            }),
+            children: List.generate(
+              filesData.length,
+              (index) {
+                var singleFile = filesData[index];
+                return TelegramScreen(fileInfo: singleFile);
+              },
+            ),
           )
         ],
       ),
