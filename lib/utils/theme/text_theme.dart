@@ -6,12 +6,12 @@ import '../colors/colors.dart';
 
 class AppTheme {
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: AppColors.C_30A2C5,
+    scaffoldBackgroundColor: AppColors.C_32383E,
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      backgroundColor: AppColors.C_30A2C5,
+      backgroundColor: AppColors.C_32383E,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.C_30A2C5,
+        statusBarColor: AppColors.C_32383E,
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
       ),
