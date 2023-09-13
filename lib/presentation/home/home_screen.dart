@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isFlash = true;
-  bool check = false;
+  bool check = true;
 
   @override
   void initState() {
@@ -45,47 +45,101 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "A")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "B")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "C")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "D")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "E")),
               ],
             ),
@@ -97,54 +151,110 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "F")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "G")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "H")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "I")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "J")),
               ],
             ),
@@ -156,47 +266,101 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "K")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "L")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "M")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "N")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "O")),
               ],
             ),
@@ -208,49 +372,104 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "P")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "Q")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "R")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "S")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "T")),
               ],
             ),
@@ -262,55 +481,113 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "U")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "V")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "W")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "X")),
                 ZoomTapAnimation(
-                    onTap: () async {
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _longFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                      await Future.delayed(const Duration(milliseconds: 500));
-                      await _shortFlash(context);
-                    },
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
                     child: const GlobalAlphabet(text: "Y")),
               ],
             ),
@@ -322,7 +599,28 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ZoomTapAnimation(
-                    onTap: () {}, child: const GlobalAlphabet(text: "Z")),
+                    onTap: check
+                        ? () async {
+                            setState(() {
+                              check = false;
+                            });
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _longFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(
+                                const Duration(milliseconds: 500));
+                            await _shortFlash(context);
+                            await Future.delayed(const Duration(seconds: 1));
+                            setState(() {
+                              check = true;
+                            });
+                          }
+                        : () {},
+                    child: const GlobalAlphabet(text: "Z")),
               ],
             ),
           ),
