@@ -22,6 +22,9 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
 
   @override
   void initState() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     super.initState();
   }
 
