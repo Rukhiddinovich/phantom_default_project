@@ -1,74 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:torch_light/torch_light.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import '../../utils/colors/colors.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MorseAlphabetRead extends StatelessWidget {
+  const MorseAlphabetRead({super.key});
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.C_17191C,
       appBar: AppBar(
-        title: const Text("Flashlight App"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                _turnOnFlash(context);
-              }, child: const Text("Flashlight Turn ON"),),
-            ElevatedButton(onPressed: () {
-              _turnOffFlash(context);
-            }, child: const Text("Flashlight Turn OFF")),
-          ],
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: AppColors.C_17191C),
+        backgroundColor: AppColors.C_17191C,
+        elevation: 0,
+        title: Text(
+          "Morse Alphabet",
+          style: TextStyle(
+              fontSize: 24.sp,
+              fontWeight: FontWeight.w500,
+              fontFamily: "Poppins",
+              color: Colors.white),
         ),
+        centerTitle: true,
       ),
     );
-  }
-
-  Future<void> _turnOnFlash(BuildContext context) async {
-    try {
-      await TorchLight.enableTorch();
-    } on Exception catch (_) {
-      _showErrorMes('Could not enable Flashlight', context);
-    }
-  }
-
-  Future<void> _turnOffFlash(BuildContext context) async {
-    try {
-      await TorchLight.disableTorch();
-    } on Exception catch (_) {
-      _showErrorMes('Could not enable Flashlight', context);
-    }
-  }
-  void _showErrorMes(String mes, BuildContext context) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(mes)));
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:default_project/presentation/app_routes.dart';
 import 'package:default_project/presentation/home/widgets/global_alphabet.dart';
 import 'package:default_project/utils/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,14 +9,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:torch_light/torch_light.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MorseFlashLight extends StatefulWidget {
+  const MorseFlashLight({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MorseFlashLight> createState() => _MorseFlashLightState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MorseFlashLightState extends State<MorseFlashLight> {
   bool isFlash = true;
   bool check = true;
 
@@ -668,7 +669,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
               ZoomTapAnimation(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.morseAlphabet);
+                },
                 child: Container(
                   width: 60.w,
                   height: 60.h,
