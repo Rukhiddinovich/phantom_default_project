@@ -1,4 +1,3 @@
-import 'package:default_project/presentation/auth/auth_screen.dart';
 import 'package:default_project/presentation/flash/flash_lighting.dart';
 import 'package:default_project/presentation/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => MorseAlphabetRead());
       case RouteNames.morseFlash:
         return MaterialPageRoute(builder: (context) => MorseFlashLight());
-      case RouteNames.authScreen:
-        return MaterialPageRoute(builder: (context) => AuthScreen());
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
