@@ -36,6 +36,7 @@ dependencies:
   shimmer: ^3.0.0
   torch_light: ^1.0.0
   model_viewer_plus: ^1.7.0
+  local_auth: ^2.1.7
 
 
 dev_dependencies:
