@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class RouteNames {
   static const String morseFlash = "/";
   static const String morseAlphabet = "/morse_alphabet";
-  static const String authScreen = "/auth_screen";
 }
 
 class AppRoutes {

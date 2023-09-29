@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.dark,
           onGenerateRoute: AppRoutes.generateRoute,
-          initialRoute: RouteNames.authScreen,
+          initialRoute: RouteNames.morseFlash,
         );
       },
     );

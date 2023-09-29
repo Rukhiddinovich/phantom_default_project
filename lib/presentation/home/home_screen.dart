@@ -720,7 +720,6 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
       await Future.delayed(const Duration(seconds: 1));
       _turnOffFlash(context);
     } catch (e) {
-      print(e);
     }
   }
 
@@ -730,7 +729,6 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
       await Future.delayed(const Duration(milliseconds: 200));
       _turnOffFlash(context);
     } catch (e) {
-      print(e);
     }
   }
 }
