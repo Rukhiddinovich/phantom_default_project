@@ -6,10 +6,10 @@ class ApiRepository{
   final ApiProvider apiProvider;
   ApiRepository({required this.apiProvider});
 
-  Future<List<Model>> getAllData()async{
+  Future<List<ContactModel>> getAllData()async{
     UniversalData universalResponse=await apiProvider.getAllData();
     if(universalResponse.error.isEmpty){
-      return universalResponse.data as  List<Model>;
+      return universalResponse.data as  List<ContactModel>;
     }
     return [];
   }
