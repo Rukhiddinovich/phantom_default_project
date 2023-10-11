@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(CupertinoIcons.delete,
                       size: 26.r, color: Colors.white),
                 ),
-                key: ValueKey(contacts[index].name),
+                key: UniqueKey(),
                 child: Column(
                   children: [
                     ListTile(
