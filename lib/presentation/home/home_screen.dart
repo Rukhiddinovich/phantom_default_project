@@ -12,22 +12,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // ContactModel? _deletedContact;
-  // void _showSnackBar(BuildContext context) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //     content: const Text('Contact deleted'),
-  //     action: SnackBarAction(
-  //       label: 'Undo',
-  //       onPressed: () {
-  //         if (_deletedContact != null) {
-  //           setState(() {
-  //             contacts.add(_deletedContact!);
-  //           });
-  //         }
-  //       },
-  //     ),
-  //   ));
-  // }
+  ContactModel? lastDeletedContact;
+  int? lastIndexDeleted;
 
   @override
   Widget build(BuildContext context) {
@@ -91,12 +77,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     Divider(color: Colors.teal, height: 1.h),
                   ],
                 ),
-                onDismissed: (v) {
+                onDismissed: (direction) {
                   setState(
                     () {
+                      lastDeletedContact = contacts[index];
+                      lastIndexDeleted = index;
                       contacts.removeAt(index);
-                      // _showSnackBar(context);
                     },
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("${contacts[index].name} deleted"),
+                      action: SnackBarAction(
+                        label: "Undo",
+                        textColor: Colors.blue,
+                        onPressed: () {
+                          setState(() {
+                            if (lastIndexDeleted != null &&
+                                lastDeletedContact != null) {
+                              contacts.insert(
+                                  lastIndexDeleted!, lastDeletedContact!);
+                              lastDeletedContact = null;
+                              lastIndexDeleted = null;
+                            }
+                          });
+                        },
+                      ),
+                    ),
                   );
                 },
               );
