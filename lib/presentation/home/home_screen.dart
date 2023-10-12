@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:ui';
-
 import 'package:default_project/presentation/home/widgets/global_container.dart';
 import 'package:default_project/presentation/home/widgets/text_widget.dart';
 import 'package:default_project/utils/constants/constants.dart';
