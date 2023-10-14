@@ -17,17 +17,6 @@ class ProductSales extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black,
-      //   title: Text(
-      //     "Product Sales",
-      //     style: TextStyle(
-      //         fontSize: 24.sp,
-      //         fontWeight: FontWeight.w500,
-      //         fontFamily: "Poppins",
-      //         color: Colors.white),
-      //   ),
-      // ),
       body: BlocConsumer<ShopBloc, ShopState>(
         listener: (context, state) {
           if (state is FormStatus) {
