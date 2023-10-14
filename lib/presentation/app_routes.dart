@@ -1,3 +1,4 @@
+import 'package:default_project/data/models/model.dart';
 import 'package:default_project/presentation/home/add_screen.dart';
 import 'package:default_project/presentation/home/home_screen.dart';
 import 'package:default_project/presentation/home/product_sales.dart';
@@ -18,15 +19,19 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => HomeScreen());
       case RouteNames.addProduct:
         return MaterialPageRoute(
-            builder: (context) =>
-                AddProductScreen(barCode: settings.arguments as String));
+            builder: (context) {
+              final map = (settings.arguments as Map<String, dynamic>);
+              return AddProductScreen(
+                barCode: map['product'], code: map['code'],);
+            });
       case RouteNames.qrCode:
         return MaterialPageRoute(builder: (context) => QRViewExample());
       case RouteNames.productSales:
         return MaterialPageRoute(builder: (context) => ProductSales());
       default:
         return MaterialPageRoute(
-          builder: (context) => const Scaffold(
+          builder: (context) =>
+          const Scaffold(
             body: Center(
               child: Text("Route not available!"),
             ),

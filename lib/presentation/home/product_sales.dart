@@ -1,16 +1,15 @@
 import 'package:default_project/bloc/shop_bloc.dart';
 import 'package:default_project/data/models/form_status.dart';
 import 'package:default_project/data/models/model.dart';
-import 'package:default_project/utils/colors/colors.dart';
+import 'package:default_project/utils/icons/icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProductSales extends StatefulWidget {
-  const ProductSales({super.key});
+  const ProductSales({Key? key});
 
   @override
   State<ProductSales> createState() => _ProductSalesState();
@@ -41,37 +40,52 @@ class _ProductSalesState extends State<ProductSales> {
           }
         },
         builder: (context, state) {
-          return ListView(
-            children: [
-              ...List.generate(
-                state.products.length,
-                (index) {
-                  ShopModel shopModel = state.products[index];
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-                    padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 5.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: ListTile(
-                      title: Text(
-                        shopModel.name,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      subtitle: Text(
-                        shopModel.qrCode.toString(),
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      trailing: Text(
-                        shopModel.count.toString(),
-                        style: TextStyle(color: Colors.black),
-                      ),
+          return state.products.isEmpty
+              ? Center(
+                  child: Lottie.asset(AppIcons.empty),
+                )
+              : ListView(
+                  children: [
+                    ...List.generate(
+                      state.products.length,
+                      (index) {
+                        ShopModel shopModel = state.products[index];
+                        return Dismissible(
+                          key: UniqueKey(),
+                          onDismissed: (direction) {
+                            BlocProvider.of<ShopBloc>(context)
+                                .add(DeleteProductEvent(id: shopModel.id ?? 0));
+                          },
+                          background: Container(color: Colors.black),
+                          secondaryBackground: Container(
+                            color: Colors.red,
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.all(16.r),
+                            child: Icon(CupertinoIcons.delete,
+                                size: 26.r, color: Colors.white),
+                          ),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 5.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5.w, vertical: 5.h),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white),
+                            child: ListTile(
+                              title: Text(shopModel.name,
+                                  style: TextStyle(color: Colors.black)),
+                              subtitle: Text(shopModel.qrCode.toString(),
+                                  style: TextStyle(color: Colors.black)),
+                              trailing: Text(shopModel.count.toString(),
+                                  style: TextStyle(color: Colors.black)),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-            ],
-          );
+                  ],
+                );
         },
       ),
     );

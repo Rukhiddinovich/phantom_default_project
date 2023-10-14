@@ -20,6 +20,7 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     on<AddProduct>(_addProduct);
     on<GetProduct>(_getProduct);
     on<UpdateProduct>(_updateProduct);
+    on<DeleteProductEvent>(_deleteProduct);
   }
 
   List<ShopModel> newProduct = [];
@@ -55,18 +56,29 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     );
   }
 
-  _updateProduct(UpdateProduct event, Emitter<ShopState> emit)async{
+  _updateProduct(UpdateProduct event, Emitter<ShopState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
-    try{
+    try {
       await LocalDatabase.updateProducts(shopModel: event.newProduct);
-      emit(
-        state.copyWith(
-          statusText: StatusTextConstants.updateProduct,
-          status: FormStatus.success,
-        )
-      );
+      emit(state.copyWith(
+        statusText: StatusTextConstants.updateProduct,
+        status: FormStatus.success,
+      ));
+    } catch (e) {
+      emit(state.copyWith(status: FormStatus.error));
     }
-    catch(e){
+  }
+
+  _deleteProduct(DeleteProductEvent event, Emitter<ShopState> emit) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    try {
+      await LocalDatabase.deleteProducts(event.id);
+      final products = await LocalDatabase.getAllProducts();
+      emit(state.copyWith(
+          statusText: StatusTextConstants.deleteProduct,
+          products: products,
+          status: FormStatus.success));
+    } catch (e) {
       emit(state.copyWith(status: FormStatus.error));
     }
   }

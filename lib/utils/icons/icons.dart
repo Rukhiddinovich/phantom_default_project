@@ -8,4 +8,5 @@ class AppIcons {
   // lottie
   static const String shop = "assets/lottie/shop.json";
   static const String background = "assets/lottie/background.json";
+  static const String empty = "assets/lottie/empty.json";
 }

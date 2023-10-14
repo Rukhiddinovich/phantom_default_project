@@ -1,10 +1,10 @@
 import 'package:default_project/bloc/shop_bloc.dart';
 import 'package:default_project/data/models/model.dart';
+import 'package:default_project/local/db/local_database.dart';
 import 'package:default_project/presentation/app_routes.dart';
 import 'package:default_project/presentation/home/widgets/global_button.dart';
 import 'package:default_project/presentation/home/widgets/global_text_field.dart';
 import 'package:default_project/utils/size/size_extension.dart';
-import 'package:default_project/utils/ui_utils/error_message_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,9 +13,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class AddProductScreen extends StatefulWidget {
-  const AddProductScreen({super.key, required this.barCode});
+  const AddProductScreen({super.key, this.barCode, this.code});
 
-  final String barCode;
+  final ShopModel? barCode;
+  final String? code;
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
@@ -52,7 +53,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 children: [
                   10.ph,
                   GlobalTextField(
-                      controller: productNameController,
+                      enable: widget.barCode == null,
+                      initialValue: widget.barCode?.name,
+                      // controller: productNameController,
                       eventText: "Product Name",
                       keyboardType: TextInputType.name,
                       textInputAction: TextInputAction.next),
@@ -64,7 +67,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   GlobalTextField(
                     enable: false,
                     eventText: "QR Code",
-                    initialValue: widget.barCode,
+                    initialValue: widget.barCode == null
+                        ? widget.code
+                        : widget.barCode?.qrCode,
                     textInputAction: TextInputAction.done,
                   ),
                   IconButton(
@@ -78,23 +83,48 @@ class _AddProductScreenState extends State<AddProductScreen> {
               ),
             ),
             ZoomTapAnimation(
-                onTap: () {
-                  if (productNameController.text.isNotEmpty &&
-                      productCountController.text.isNotEmpty) {
-                    BlocProvider.of<ShopBloc>(context).add(AddProduct(
+              onTap: () async {
+                print('ok1');
+                if ((productNameController.text.isNotEmpty || widget.barCode!.name.isNotEmpty) &&
+                    productCountController.text.isNotEmpty) {
+                  print('ok2');
+                  final barCode = await LocalDatabase.getSingleProduct(
+                      widget.barCode?.qrCode ?? widget.code!);
+                  if (barCode != null) {
+                    if (!context.mounted) return;
+                    context.read<ShopBloc>().add(UpdateProduct(
+                        newProduct: ShopModel(
+                            id: barCode.id,
+                            name: productNameController.text.isNotEmpty? productNameController.text: widget.barCode!.name ,
+                            count: (int.parse(productCountController.text) +
+                                    int.parse(barCode.count))
+                                .toString(),
+                            qrCode: widget.barCode!.qrCode)));
+                  } else {
+                    print('ok3');
+                    if (!context.mounted) return;
+                    context.read<ShopBloc>().add(AddProduct(
                         newProducts: ShopModel(
                             name: productNameController.text,
                             count: productCountController.text,
-                            qrCode: widget.barCode)));
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, RouteNames.homeScreen, (route) => false);
-                  } else {
-                    showErrorMessage(
-                        message: "The data is incomplete!", context: context);
+                            qrCode: widget.code!)));
                   }
-                },
-                child: const GlobalButton(
-                    buttonText: "Add Product", buttonColor: Color(0xFF181A20)))
+                  print('ok4');
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, RouteNames.homeScreen, (route) => false);
+                } else {
+                  print('ok5');
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Please fill all fields"),
+                    duration: const Duration(seconds: 2),
+                  ));
+                }
+              },
+              child: const GlobalButton(
+                buttonText: "Add Product",
+                buttonColor: Color(0xFF181A20),
+              ),
+            ),
           ],
         ),
       ),

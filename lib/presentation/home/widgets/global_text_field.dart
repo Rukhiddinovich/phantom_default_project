@@ -8,7 +8,7 @@ class GlobalTextField extends StatelessWidget {
       {super.key,
       required this.eventText,
        this.keyboardType,
-       this.textInputAction,  this.controller, this.initialValue, this.enable});
+       this.textInputAction,  this.controller, this.initialValue, this.enable,this.isReadOnly});
 
   final String eventText;
   final TextInputType? keyboardType;
@@ -16,6 +16,7 @@ class GlobalTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? initialValue;
   final bool? enable;
+  final bool? isReadOnly;
 
   @override
   Widget build(BuildContext context) {

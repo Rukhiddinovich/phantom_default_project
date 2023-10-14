@@ -72,9 +72,18 @@ class _QRViewExampleState extends State<QRViewExample> {
                   this.controller = controller;
                   if (scanData.code != null) {
                     controller.stopCamera();
-
-                    Navigator.pushNamed(context, RouteNames.addProduct,
-                        arguments: scanData.code);
+                    final product =
+                        await LocalDatabase.getSingleProduct(scanData.code!);
+                    if (!context.mounted) return;
+                    if (product != null) {
+                      Navigator.pushNamed(context, RouteNames.addProduct,
+                          arguments: {'product':product});
+                    } else {
+                      Navigator.pushNamed(
+                        context,
+                        RouteNames.addProduct,arguments: {'code':scanData.code!}
+                      );
+                    }
                   }
                 },
               );
@@ -85,9 +94,10 @@ class _QRViewExampleState extends State<QRViewExample> {
       ),
     );
   }
-  void CheckProduct(String qrCode,BuildContext context) async {
+
+  void CheckProduct(String qrCode, BuildContext context) async {
     final List<ShopModel> existingProducts =
-    await LocalDatabase.getAllProducts();
+        await LocalDatabase.getAllProducts();
     ShopModel? existingProduct;
     for (var product in existingProducts) {
       if (product.qrCode == qrCode) {
@@ -95,9 +105,10 @@ class _QRViewExampleState extends State<QRViewExample> {
         break;
       }
     }
-    if(existingProduct!= null && context.mounted){
-      Navigator.pushNamed(context, RouteNames.addProduct, arguments: existingProduct);
-    }else{
+    if (existingProduct != null && context.mounted) {
+      Navigator.pushNamed(context, RouteNames.addProduct,
+          arguments: existingProduct);
+    } else {
       Navigator.pushNamed(context, RouteNames.addProduct, arguments: qrCode);
     }
   }

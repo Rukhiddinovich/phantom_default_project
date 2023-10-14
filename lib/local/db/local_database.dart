@@ -85,7 +85,7 @@ class LocalDatabase {
     List<ShopModel> contacts = [];
     final db = await getInstance.database;
     contacts = (await db.query(
-      ShopModelFields.qrCode,
+      ShopModelFields.modelTable,
       where: "${ShopModelFields.qrCode} = ?",
       whereArgs: [barCode],
     ))
