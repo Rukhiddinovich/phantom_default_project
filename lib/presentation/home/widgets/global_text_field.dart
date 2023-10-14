@@ -7,8 +7,13 @@ class GlobalTextField extends StatelessWidget {
   const GlobalTextField(
       {super.key,
       required this.eventText,
-       this.keyboardType,
-       this.textInputAction,  this.controller, this.initialValue, this.enable,this.isReadOnly, this.validator});
+      this.keyboardType,
+      this.textInputAction,
+      this.controller,
+      this.initialValue,
+      this.enable,
+      this.isReadOnly,
+      this.validator});
 
   final String eventText;
   final TextInputType? keyboardType;
@@ -39,7 +44,7 @@ class GlobalTextField extends StatelessWidget {
         4.ph,
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.r), color: Color(0xFF181A20)),
+              borderRadius: BorderRadius.circular(8.r), color: Colors.black38),
           child: TextFormField(
             validator: validator,
             initialValue: initialValue,

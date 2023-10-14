@@ -10,7 +10,7 @@ class ShopModelFields {
 class ShopModel {
   int? id;
   String? qrCode;
-  final String count;
+  late final int count;
   final String name;
 
   ShopModel({
@@ -24,14 +24,14 @@ class ShopModel {
     return ShopModel(
       id: json[ShopModelFields.id] as int? ?? 0,
       name: json[ShopModelFields.name] as String? ?? "",
-      count: json[ShopModelFields.count] as String? ?? "",
+      count: json[ShopModelFields.count] as int? ?? 0,
       qrCode: json[ShopModelFields.qrCode] as String? ?? "",
     );
   }
 
   ShopModel copyWith({
     int? id,
-    String? count,
+    int? count,
     String? name,
     String? qrCode,
   }) =>

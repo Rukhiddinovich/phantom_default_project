@@ -59,11 +59,18 @@ class _QRViewExampleState extends State<QRViewExample> {
               fontFamily: "Poppins",
               color: Colors.white),
         ),
+        centerTitle: true,
       ),
       body: Stack(
         children: [
           QRView(
-            overlay: QrScannerOverlayShape(),
+
+            overlay: QrScannerOverlayShape(
+              borderColor: Colors.white,
+              borderRadius: 15,
+              borderLength: 30,
+              borderWidth: 10,
+            ),
             key: qrKey,
             onQRViewCreated: (QRViewController controller) {
               this.controller = controller;
@@ -95,7 +102,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     );
   }
 
-  void CheckProduct(String qrCode, BuildContext context) async {
+  void checkProduct(String qrCode, BuildContext context) async {
     final List<ShopModel> existingProducts =
         await LocalDatabase.getAllProducts();
     ShopModel? existingProduct;

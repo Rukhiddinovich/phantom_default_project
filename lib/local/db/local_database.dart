@@ -32,13 +32,13 @@ class LocalDatabase {
   Future _createDB(Database db, int version) async {
     const idType = "INTEGER PRIMARY KEY AUTOINCREMENT";
     const textType = "TEXT NOT NULL";
-    // const intType = "INTEGER DEFAULT 0";
+    const intType = "INTEGER DEFAULT 0";
 
     await db.execute('''
     CREATE TABLE ${ShopModelFields.modelTable} (
     ${ShopModelFields.id} $idType,
     ${ShopModelFields.name} $textType,
-    ${ShopModelFields.count} $textType,
+    ${ShopModelFields.count} $intType,
     ${ShopModelFields.qrCode} $textType
     )
     ''');
