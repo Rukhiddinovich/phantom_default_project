@@ -32,17 +32,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black38,
-      //   title: Text(
-      //     "Add Screen",
-      //     style: TextStyle(
-      //         fontSize: 24.sp,
-      //         fontWeight: FontWeight.w500,
-      //         fontFamily: "Poppins",
-      //         color: Colors.white),
-      //   ),
-      // ),
       body: Form(
         key: _formKey,
         child: Stack(

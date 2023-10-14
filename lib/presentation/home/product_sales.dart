@@ -1,8 +1,10 @@
 import 'package:default_project/bloc/shop_bloc.dart';
 import 'package:default_project/data/models/form_status.dart';
 import 'package:default_project/data/models/model.dart';
+import 'package:default_project/presentation/app_routes.dart';
 import 'package:default_project/presentation/home/widgets/show_dialog.dart';
 import 'package:default_project/utils/icons/icons.dart';
+import 'package:default_project/utils/size/size_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +45,31 @@ class ProductSales extends StatelessWidget {
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width),
                     ListView(
+                      physics: const BouncingScrollPhysics(),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 15.w, vertical: 30.h),
                       children: [
+                        Row(
+                          children: [
+                            ZoomTapAnimation(
+                                onTap: () {
+                                  Navigator.pushNamedAndRemoveUntil(context,
+                                      RouteNames.homeScreen, (route) => false);
+                                },
+                                child: Icon(Icons.arrow_back,
+                                    color: Colors.white, size: 25.r)),
+                            70.pw,
+                            Text(
+                              "Product Sales",
+                              style: TextStyle(
+                                  fontSize: 24.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "Poppins",
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        20.ph,
                         ...List.generate(
                           state.products.length,
                           (index) {
@@ -76,8 +102,7 @@ class ProductSales extends StatelessWidget {
                                       size: 26.r, color: Colors.white),
                                 ),
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10.w, vertical: 5.h),
+                                  margin: EdgeInsets.symmetric(vertical: 5.h),
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 5.w, vertical: 5.h),
                                   decoration: BoxDecoration(
