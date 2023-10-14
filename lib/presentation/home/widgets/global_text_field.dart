@@ -8,7 +8,7 @@ class GlobalTextField extends StatelessWidget {
       {super.key,
       required this.eventText,
        this.keyboardType,
-       this.textInputAction,  this.controller, this.initialValue, this.enable,this.isReadOnly});
+       this.textInputAction,  this.controller, this.initialValue, this.enable,this.isReadOnly, this.validator});
 
   final String eventText;
   final TextInputType? keyboardType;
@@ -17,6 +17,7 @@ class GlobalTextField extends StatelessWidget {
   final String? initialValue;
   final bool? enable;
   final bool? isReadOnly;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class GlobalTextField extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r), color: Color(0xFF181A20)),
           child: TextFormField(
+            validator: validator,
             initialValue: initialValue,
             keyboardType: keyboardType,
             enabled: enable,
