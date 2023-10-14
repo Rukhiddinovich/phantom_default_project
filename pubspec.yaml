@@ -34,7 +34,7 @@ dependencies:
   url_launcher: ^6.1.14
   flutter_linkify: ^6.0.0
   shimmer: ^3.0.0
-
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +54,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/translations/
+    - assets/lottie/
 
 
   fonts:

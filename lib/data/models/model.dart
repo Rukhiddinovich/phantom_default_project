@@ -1,50 +1,63 @@
-class Model {
-  final num id;
-  final String number;
+class ShopModelFields {
+  static const String id = "_id";
+  static const String name = "name";
+  static const String count = "count";
+  static const String qrCode = "qrCode";
+
+  static const String modelTable = "model_table";
+}
+
+class ShopModel {
+  int? id;
+  String? qrCode;
+  final String count;
   final String name;
-  final String img;
-  final List<dynamic> type;
-  final String height;
-  final String weight;
-  final String candy;
-  final num candyCount;
-  final String egg;
-  final num spawnChance;
-  final num avgSpawns;
-  final String spawnTime;
-  final List<dynamic> weaknesses;
 
-  Model(
-      {required this.id,
-        required this.img,
-        required this.weight,
-        required this.height,
-        required this.name,
-        required this.type,
-        required this.number,
-        required this.avgSpawns,
-        required this.candy,
-        required this.candyCount,
-        required this.egg,
-        required this.spawnTime,
-        required this.spawnChance,
-        required this.weaknesses});
+  ShopModel({
+    this.id,
+    this.qrCode,
+    required this.name,
+    required this.count,
+  });
 
-  factory Model.fromJson(Map<String, dynamic> json) {
-    return Model(
-        id: json["id"] as num? ?? 0,
-        img: json["img"] as String? ?? "",
-        weight: json["weight"] as String? ?? "",
-        height: json["height"] as String? ?? "",
-        name: json["name"] as String? ?? "",
-        type: json["type"] as List<dynamic>? ?? [],
-        number: json["num"] as String? ?? "",
-        avgSpawns: json["avg_spawns"]as num? ?? 0,
-        candy: json["candy"]as String? ?? "",
-        candyCount: json["candy_count"]as num? ?? 0,
-        egg: json["egg"]as String? ?? "",
-        spawnTime: json["spawn_time"]as String? ?? "",
-        spawnChance: json["spawn_chance"]as num? ?? 0,
-        weaknesses: json["weaknesses"]as List<dynamic>? ?? []);
+  factory ShopModel.fromJson(Map<String, dynamic> json) {
+    return ShopModel(
+      id: json[ShopModelFields.id] as int? ?? 0,
+      name: json[ShopModelFields.name] as String? ?? "",
+      count: json[ShopModelFields.count] as String? ?? "",
+      qrCode: json[ShopModelFields.qrCode] as String? ?? "",
+    );
   }
+
+  ShopModel copyWith({
+    int? id,
+    String? count,
+    String? name,
+    String? qrCode,
+  }) =>
+      ShopModel(
+          id: id ?? this.id,
+          name: name ?? this.name,
+          count: count ?? this.count,
+          qrCode: qrCode ?? this.qrCode);
+
+  @override
+  String toString() {
+    return """
+    id: $id,
+    name: $name,
+    count: $count,
+    qrCode: $qrCode
+    """;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      ShopModelFields.name: name,
+      ShopModelFields.count: count,
+      ShopModelFields.qrCode: qrCode,
+    };
+  }
+
+  List<Object?> get props => [id, name, count, qrCode];
 }

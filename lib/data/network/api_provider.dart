@@ -13,7 +13,7 @@ class ApiProvider {
       if (response.statusCode == 200) {
         return UniversalData(
             data: (jsonDecode(response.body)['pokemon'] as List?)
-                ?.map((e) => Model.fromJson(e))
+                ?.map((e) => ShopModel.fromJson(e))
                 .toList() ??
                 []);
       }

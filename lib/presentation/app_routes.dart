@@ -1,41 +1,37 @@
-// import 'package:flutter/material.dart';
-//
-// class RouteNames {
-//   static const String contacts = "/";
-//   static const String addContact = "/add_contact";
-//   static const String contactDetails = "/contact_details";
-//   static const String contactUpdate = "/contact_update";
-// }
-//
-// class AppRoutes {
-//   static Route generateRoute(RouteSettings settings) {
-//     switch (settings.name) {
-//       case RouteNames.contacts:
-//         return MaterialPageRoute(builder: (context) => MyContactsScreen());
-//       case RouteNames.addContact:
-//         return MaterialPageRoute(builder: (context) {
-//           return AddContactScreen(
-//             listener: settings.arguments as VoidCallback,
-//           );
-//         });
-//       case RouteNames.contactUpdate:
-//         return MaterialPageRoute(builder: (context) => UpdateContactScreen());
-//       case RouteNames.contactDetails:
-//         return MaterialPageRoute(builder: (context) {
-//           Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
-//           return ContactDetailScreen(
-//             deleteListener: map["deleteListener"],
-//             contactModelSql: map["contactModelSql"],
-//           );
-//         });
-//       default:
-//         return MaterialPageRoute(
-//           builder: (context) => const Scaffold(
-//             body: Center(
-//               child: Text("Route mavjud emas"),
-//             ),
-//           ),
-//         );
-//     }
-//   }
-// }
+import 'package:default_project/presentation/home/add_screen.dart';
+import 'package:default_project/presentation/home/home_screen.dart';
+import 'package:default_project/presentation/home/product_sales.dart';
+import 'package:default_project/presentation/home/widgets/qrCode_screen.dart';
+import 'package:flutter/material.dart';
+
+class RouteNames {
+  static const String homeScreen = "/";
+  static const String addProduct = "/add_product";
+  static const String qrCode = "/qr_code";
+  static const String productSales = "/product_sales";
+}
+
+class AppRoutes {
+  static Route generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteNames.homeScreen:
+        return MaterialPageRoute(builder: (context) => HomeScreen());
+      case RouteNames.addProduct:
+        return MaterialPageRoute(
+            builder: (context) =>
+                AddProductScreen(barCode: settings.arguments as String));
+      case RouteNames.qrCode:
+        return MaterialPageRoute(builder: (context) => QRViewExample());
+      case RouteNames.productSales:
+        return MaterialPageRoute(builder: (context) => ProductSales());
+      default:
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(
+              child: Text("Route not available!"),
+            ),
+          ),
+        );
+    }
+  }
+}
