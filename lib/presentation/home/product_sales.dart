@@ -30,14 +30,37 @@ class ProductSales extends StatelessWidget {
         builder: (context, state) {
           return state.products.isEmpty
               ? Stack(
-                  children: [
-                    Lottie.asset(AppIcons.background,
-                        fit: BoxFit.fill,
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width),
-                    Center(child: Lottie.asset(AppIcons.empty)),
-                  ],
-                )
+                children: [
+                  Lottie.asset(AppIcons.background,
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width),
+                  Padding(
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
+                    child: Row(
+                      children: [
+                        ZoomTapAnimation(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(Icons.arrow_back,
+                                color: Colors.white, size: 25.r)),
+                        70.pw,
+                        Text(
+                          "Product Sales",
+                          style: TextStyle(
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Poppins",
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Center(child: Lottie.asset(AppIcons.empty)),
+                ],
+              )
               : Stack(
                   children: [
                     Lottie.asset(AppIcons.background,

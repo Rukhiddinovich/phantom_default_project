@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 10.h),
+                              horizontal: 15.w, vertical: 10.h),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               color: Colors.black38),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 10.h),
+                              horizontal: 15.w, vertical: 10.h),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               color: Colors.black38),
