@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 class AppColors {
   static const Color C_00B2FF = Color(0xFF00B2FF);
   static const Color C_30A2C5 = Color(0xFF30A2C5);
+  static const Color C_313131 = Color(0xFF313131);
+  static const Color C_131313 = Color(0xFF131313);
   static Color textColor = const Color(0xFFFFFFFF).withOpacity(0.87);
   static const Color passiveTextColor = Color(0xFFAFAFAF);
 
