@@ -14,7 +14,8 @@ Future<void> initFirebase() async {
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     debugPrint(
-        "NOTIFICATION FOREGROUND MODE: ${message.data["title"]} va ${message.notification!.title} in foreground");
+        "NOTIFICATION FOREGROUND MODE: ${message.data["title"]} va ${message
+            .notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
     newsProvider.insertNews(
       newsModel: NewsModel(
@@ -43,12 +44,13 @@ Future<void> initFirebase() async {
       ),
     );
     debugPrint(
-        "NOTIFICATION FROM TERMINATED MODE: ${message.data["title"]} va ${message.notification!.title} in terminated");
+        "NOTIFICATION FROM TERMINATED MODE: ${message
+            .data["title"]} va ${message.notification!.title} in terminated");
     LocalNotificationService.instance.showFlutterNotification(message);
   }
 
   RemoteMessage? remoteMessage =
-      await FirebaseMessaging.instance.getInitialMessage();
+  await FirebaseMessaging.instance.getInitialMessage();
 
   if (remoteMessage != null) {
     handelMessage(remoteMessage);
@@ -73,5 +75,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   );
   newsProvider.getNews();
   debugPrint(
-      "NOTIFICATION BACKGROUND MODE: ${message.data["title"]} va ${message.notification!.title} in background");
+      "NOTIFICATION BACKGROUND MODE: ${message.data["title"]} va ${message
+          .notification!.title} in background");
 }

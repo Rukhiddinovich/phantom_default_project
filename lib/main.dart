@@ -16,7 +16,6 @@ Future<void> main() async {
   await StorageRepository.getInstance();
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-
   await initFirebase();
   await LocalNotificationService.instance.setupFlutterNotifications();
 
