@@ -50,8 +50,8 @@ class ApiService {
       if ((response.statusCode! >= 200) && (response.statusCode! < 300)) {
         return UniversalData(
             data: (response.data as List?)
-                ?.map((e) => YearModel.fromJson(e))
-                .toList() ??
+                    ?.map((e) => YearModel.fromJson(e))
+                    .toList() ??
                 []);
       }
       return UniversalData(error: "Other Error");
@@ -59,11 +59,10 @@ class ApiService {
       if (e.response != null) {
         return UniversalData(error: e.response!.data["message"]);
       } else {
-        return UniversalData(error: e.message!);
+        return UniversalData(error: e.message.toString());
       }
     } catch (error) {
       return UniversalData(error: error.toString());
     }
   }
-
 }
