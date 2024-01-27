@@ -1,10 +1,17 @@
 import 'package:default_project/presentation/app_routes.dart';
+import 'package:default_project/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 
 Future<void> main()async {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,9 +24,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const MaterialApp(
+        return MaterialApp(
+          theme: Provider.of<ThemeProvider>(context).getTheme(),
           debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.dark,
           onGenerateRoute: AppRoutes.generateRoute,
           initialRoute: RouteNames.morseFlash,
         );

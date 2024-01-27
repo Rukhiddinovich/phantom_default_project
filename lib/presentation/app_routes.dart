@@ -1,21 +1,26 @@
-import 'package:default_project/presentation/flash/flash_lighting.dart';
-import 'package:default_project/presentation/home/home_screen.dart';
+import 'package:default_project/presentation/document_flash_light/flash_lighting.dart';
+import 'package:default_project/presentation/home/morse_flash_light.dart';
+import 'package:default_project/presentation/settings/settings_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RouteNames {
   static const String morseFlash = "/";
   static const String morseAlphabet = "/morse_alphabet";
+  static const String settings = "/settings";
 }
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteNames.morseAlphabet:
-        return MaterialPageRoute(builder: (context) => MorseAlphabetRead());
+        return CupertinoPageRoute(builder: (context) => MorseAlphabetRead());
       case RouteNames.morseFlash:
-        return MaterialPageRoute(builder: (context) => MorseFlashLight());
+        return CupertinoPageRoute(builder: (context) => MorseFlashLight());
+      case RouteNames.settings:
+        return CupertinoPageRoute(builder: (context) => SettingsScreen());
       default:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (context) => const Scaffold(
             body: Center(
               child: Text("Route mavjud emas"),

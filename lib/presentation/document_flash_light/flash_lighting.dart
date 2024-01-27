@@ -1,6 +1,9 @@
+import 'package:default_project/provider/theme_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../utils/colors/colors.dart';
 import '../home/widgets/global_alphabet.dart';
@@ -19,19 +22,24 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.C_17191C,
+      // backgroundColor: AppColors.C_17191C,
       appBar: AppBar(
-        systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: AppColors.C_17191C),
-        backgroundColor: AppColors.C_17191C,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            CupertinoIcons.chevron_back,
+          ),
+        ),
         elevation: 0,
         title: Text(
           "Morse Alphabet",
           style: TextStyle(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.w500,
-              fontFamily: "Poppins",
-              color: Colors.white),
+            fontSize: 24.sp,
+            fontWeight: FontWeight.w500,
+            fontFamily: "Poppins",
+          ),
         ),
         centerTitle: true,
       ),
@@ -45,7 +53,9 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
             constraints: BoxConstraints(maxHeight: 200, minHeight: 100),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
-                color: AppColors.C_32383E),
+                color: Provider.of<ThemeProvider>(context).isDarkMode
+                    ? AppColors.C_32383E
+                    : AppColors.passiveTextColor),
             child: SingleChildScrollView(
               controller: _scrollController,
               physics: BouncingScrollPhysics(),
@@ -66,25 +76,6 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
               ),
             ),
           ),
-          // SingleChildScrollView(
-          //   reverse: true,
-          //   scrollDirection: Axis.horizontal,
-          //   child: Row(
-          //     children: morseCodes.map((code) {
-          //       return Padding(
-          //         padding: EdgeInsets.symmetric(horizontal: 20.w),
-          //         child: Text(
-          //           code,
-          //           style: TextStyle(
-          //             color: Colors.white,
-          //             fontSize: 20.sp,
-          //             fontFamily: "Poppins",
-          //           ),
-          //         ),
-          //       );
-          //     }).toList(),
-          //   ),
-          // ),
           SizedBox(height: 50.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -155,35 +146,20 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
             ),
           ),
           SizedBox(height: 10.h),
-
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: morseCodes.length,
-          //     itemBuilder: (context, index) {
-          //       return Padding(
-          //         padding: EdgeInsets.symmetric(horizontal: 20.w),
-          //         child: Text(
-          //           morseCodes[index],
-          //           style: TextStyle(
-          //             color: Colors.white,
-          //             fontSize: 20.sp,
-          //             fontFamily: "Poppins",
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         onPressed: () {
+          HapticFeedback.vibrate();
           setState(() {
             morseCodes.clear();
           });
         },
-        child: const Icon(Icons.cleaning_services),
+        child: const Icon(
+          Icons.cleaning_services,
+          color: AppColors.white,
+        ),
       ),
     );
   }
@@ -191,6 +167,8 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
   Widget buildAlphabetButton(String letter, String code) {
     return ZoomTapAnimation(
       onTap: () {
+        HapticFeedback.vibrate();
+
         setState(() {
           morseCodes.add("$letter:  $code");
         });

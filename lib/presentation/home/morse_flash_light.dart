@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:default_project/presentation/app_routes.dart';
 import 'package:default_project/presentation/home/widgets/global_alphabet.dart';
+import 'package:default_project/provider/theme_provider.dart';
 import 'package:default_project/utils/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:torch_light/torch_light.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -22,22 +24,27 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
 
   @override
   void initState() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.C_17191C,
+      // backgroundColor: AppColors.C_17191C,
       appBar: AppBar(
-        systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: AppColors.C_17191C),
-        backgroundColor: AppColors.C_17191C,
+        // systemOverlayStyle:
+        //     const SystemUiOverlayStyle(statusBarColor: AppColors.C_17191C),
+        // backgroundColor: AppColors.C_17191C,
         elevation: 0,
-        toolbarHeight: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RouteNames.settings);
+            },
+            icon: const Icon(CupertinoIcons.settings),
+          )
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -51,6 +58,7 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
                             setState(() {
                               check = false;
                             });
@@ -68,6 +76,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -91,6 +101,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -114,6 +126,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -134,6 +148,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -157,6 +173,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -180,6 +198,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -200,6 +220,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -223,6 +245,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -240,6 +264,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -272,6 +298,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -292,6 +320,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -315,6 +345,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -332,6 +364,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -349,6 +383,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -378,6 +414,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -401,6 +439,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -424,6 +464,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -444,6 +486,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -464,6 +508,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -487,6 +533,7 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
                             setState(() {
                               check = false;
                             });
@@ -507,6 +554,7 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
                             setState(() {
                               check = false;
                             });
@@ -530,6 +578,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -550,6 +600,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -573,6 +625,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -605,6 +659,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                 ZoomTapAnimation(
                     onTap: check
                         ? () async {
+                            HapticFeedback.vibrate();
+
                             setState(() {
                               check = false;
                             });
@@ -635,6 +691,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
               isFlash
                   ? ZoomTapAnimation(
                       onTap: () {
+                        HapticFeedback.vibrate();
+
                         setState(() {
                           isFlash = !isFlash;
                         });
@@ -645,7 +703,10 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                         height: 60.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.C_32383E),
+                            color:
+                                Provider.of<ThemeProvider>(context).isDarkMode
+                                    ? AppColors.C_32383E
+                                    : AppColors.passiveTextColor),
                         child: Center(
                           child: Icon(Icons.flashlight_on_rounded,
                               color: Colors.white, size: 30.r),
@@ -654,6 +715,8 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                     )
                   : ZoomTapAnimation(
                       onTap: () {
+                        HapticFeedback.vibrate();
+
                         setState(() {
                           isFlash = !isFlash;
                         });
@@ -664,7 +727,10 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                         height: 60.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.C_32383E),
+                            color:
+                                Provider.of<ThemeProvider>(context).isDarkMode
+                                    ? AppColors.C_32383E
+                                    : AppColors.passiveTextColor),
                         child: Center(
                           child: Icon(Icons.flashlight_off_rounded,
                               color: Colors.white, size: 30.r),
@@ -680,7 +746,9 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
                   height: 60.h,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100.r),
-                      color: AppColors.C_32383E),
+                      color: Provider.of<ThemeProvider>(context).isDarkMode
+                          ? AppColors.C_32383E
+                          : AppColors.passiveTextColor),
                   child: Center(
                     child: Icon(CupertinoIcons.doc_text_fill,
                         color: Colors.white, size: 30.r),
@@ -711,7 +779,11 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
   }
 
   void _showErrorMessage(String mes, BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(mes)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+      mes,
+      style: TextStyle(color: Colors.white),
+    )));
   }
 
   Future<void> _longFlash(BuildContext context) async {
@@ -719,8 +791,7 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
       _turnOnFlash(context);
       await Future.delayed(const Duration(seconds: 1));
       _turnOffFlash(context);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   Future<void> _shortFlash(BuildContext context) async {
@@ -728,7 +799,6 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
       _turnOnFlash(context);
       await Future.delayed(const Duration(milliseconds: 200));
       _turnOffFlash(context);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 }
