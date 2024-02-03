@@ -31,11 +31,7 @@ class _MorseFlashLightState extends State<MorseFlashLight> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.C_17191C,
       appBar: AppBar(
-        // systemOverlayStyle:
-        //     const SystemUiOverlayStyle(statusBarColor: AppColors.C_17191C),
-        // backgroundColor: AppColors.C_17191C,
         elevation: 0,
         actions: [
           IconButton(
