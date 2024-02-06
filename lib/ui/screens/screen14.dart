@@ -9,24 +9,28 @@ class ScreenFourteen extends StatefulWidget {
 }
 
 class _ScreenFourteenState extends State<ScreenFourteen>
-    with TickerProviderStateMixin {
-  late AnimationController animationController;
-  late Animation colorAnimation;
-  late Animation sizeAnimation;
-  late Animation<double> percentAnimation;
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation decorationAnimation;
+  bool isTapped = false;
 
   @override
   void initState() {
     super.initState();
-    animationController =
+    controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
-    colorAnimation = ColorTween(begin: Colors.blue, end: Colors.yellow)
-        .animate(animationController);
-    sizeAnimation =
-        Tween(begin: 0.0, end: 350.0.w).animate(animationController);
-    percentAnimation =
-        Tween<double>(begin: 0.0, end: 100.0).animate(animationController);
-    animationController.addListener(() {
+    decorationAnimation = DecorationTween(
+      begin: BoxDecoration(
+          border: Border.all(width: 5.w, color: Colors.black),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(0)),
+      end: BoxDecoration(
+          border: Border.all(width: 5.w, color: Colors.black),
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(20.r)),
+    ).animate(controller);
+
+    controller.addListener(() {
       setState(() {});
     });
   }
@@ -43,48 +47,32 @@ class _ScreenFourteenState extends State<ScreenFourteen>
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            AnimatedContainer(
+              duration: const Duration(seconds: 0),
               width: 200.w,
               height: 200.h,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: colorAnimation.value),
+              decoration: decorationAnimation.value,
+              child: FlutterLogo(
+                size: 150.r
+              ),
             ),
-            SizedBox(height: 50.h),
-            Stack(
-              children: [
-                Container(
-                  height: 50.h,
-                  width: 350.w,
-                  color: Colors.blue.withOpacity(0.7),
-                ),
-                Container(
-                  height: 50.h,
-                  width: sizeAnimation.value,
-                  color: Colors.blueAccent,
-                )
-              ],
-            ),
-            SizedBox(height: 20.h),
-            Text(
-              "${percentAnimation.value.toInt()} %",
-              style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
-            ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
             ElevatedButton(
-                onPressed: () {
-                  animationController.reset();
-                  animationController.forward();
-                },
-                child: const Text("Animate"))
+              onPressed: () {
+                isTapped ? controller.reverse() : controller.forward();
+                isTapped = !isTapped;
+              },
+              child: Text(
+                "Click me",
+                style: TextStyle(fontSize: 20.sp, fontFamily: "Poppins"),
+              ),
+            ),
           ],
         ),
       ),

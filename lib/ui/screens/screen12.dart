@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ScreenTwelve extends StatefulWidget {
   const ScreenTwelve({super.key});
@@ -9,22 +8,22 @@ class ScreenTwelve extends StatefulWidget {
   State<ScreenTwelve> createState() => _ScreenTwelveState();
 }
 
-class _ScreenTwelveState extends State<ScreenTwelve>
-    with SingleTickerProviderStateMixin {
+class _ScreenTwelveState extends State<ScreenTwelve>  with SingleTickerProviderStateMixin{
   late AnimationController controller;
-  late Animation paddingAnimation;
-  bool isTapped = false;
+  late Animation sizeAnimation;
 
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
-    paddingAnimation = Tween(begin: 10.0, end: 100.0).animate(controller);
+    controller=AnimationController(vsync: this,duration: Duration(seconds: 3));
 
-    controller.addListener(() {
-      setState(() {});
-    });
+    sizeAnimation=Tween(begin: 100.0,end: 300.0).animate(controller);
+    controller.addListener(() {setState(() {
+
+    });});
+
+    controller.forward();
+
   }
 
   @override
@@ -39,29 +38,16 @@ class _ScreenTwelveState extends State<ScreenTwelve>
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ZoomTapAnimation(
-            onTap: () {
-              isTapped ? controller.reverse() : controller.forward();
-              setState(() {
-                isTapped = !isTapped;
-              });
-            },
-            child: AnimatedPadding(
-              padding: EdgeInsets.symmetric(horizontal: paddingAnimation.value),
-              duration: const Duration(seconds: 0),
-              child: Container(
-                height: 100.h,
-                width: double.infinity,
-                color: Colors.blueAccent,
-              ),
-            ),
-          )
-        ],
+      body: Center(
+        child: AnimatedSize(
+          duration: const Duration(seconds: 0),
+          child: Container(
+            color: Colors.yellow,
+            child: FlutterLogo(size: sizeAnimation.value,),
+          ),
+        ),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -26,15 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
     twelveScreenRoute,
     thirteenScreenRoute,
     fourteenScreenRoute,
-    fifteenScreenRoute,
-    sixteenScreenRoute
+    fifteenScreenRoute
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
         title: Text(
           "Animations",
           style: TextStyle(

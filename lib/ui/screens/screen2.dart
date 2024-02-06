@@ -40,7 +40,7 @@ class _ScreenTwoState extends State<ScreenTwo> with TickerProviderStateMixin {
           "Screen 2",
           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600,fontFamily: "Poppins",color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(

@@ -24,7 +24,7 @@ class _ScreenSixState extends State<ScreenSix> {
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.white,
       body: Center(

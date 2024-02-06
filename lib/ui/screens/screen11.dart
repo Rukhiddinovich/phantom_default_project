@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ScreenEleven extends StatefulWidget {
   const ScreenEleven({super.key});
@@ -11,17 +12,16 @@ class ScreenEleven extends StatefulWidget {
 class _ScreenElevenState extends State<ScreenEleven>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation alignAnimation;
+  late Animation paddingAnimation;
+  bool isTapped = false;
 
   @override
   void initState() {
     super.initState();
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    paddingAnimation = Tween(begin: 10.0, end: 100.0).animate(controller);
 
-    alignAnimation = AlignmentTween(
-            begin: Alignment.topLeft, end: Alignment.bottomRight)
-        .animate(CurvedAnimation(parent: controller, curve: Curves.bounceIn));
     controller.addListener(() {
       setState(() {});
     });
@@ -32,55 +32,37 @@ class _ScreenElevenState extends State<ScreenEleven>
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Screen 10",
+          "Screen 11",
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black
+        ,
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 300.w,
-              height: 300.h,
-              color: Colors.lightBlueAccent,
-              child: AnimatedAlign(
-                alignment: alignAnimation.value,
-                duration: const Duration(seconds: 0),
-                child: Text(
-                  "Woolha.com",
-                  style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "Poppins",
-                      color: Colors.white),
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ZoomTapAnimation(
+            onTap: () {
+              isTapped ? controller.reverse() : controller.forward();
+              setState(() {
+                isTapped = !isTapped;
+              });
+            },
+            child: AnimatedPadding(
+              padding: EdgeInsets.symmetric(horizontal: paddingAnimation.value),
+              duration: const Duration(seconds: 0),
+              child: Container(
+                height: 100.h,
+                width: double.infinity,
+                color: Colors.blueAccent,
               ),
             ),
-            SizedBox(height: 20.h),
-            TextButton(
-              onPressed: () {
-                controller.reset();
-                controller.forward();
-              },
-              child: Text(
-                "Change Alignment",
-                style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins",
-                    color: Colors.blue),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

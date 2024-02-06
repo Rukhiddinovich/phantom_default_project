@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CupertinoActionItem extends StatelessWidget {
   const CupertinoActionItem(
-      this.onTap,
-      this.text,
-      this.textColor, {
-        super.key, required this.buttonColor,
-      });
+    this.onTap,
+    this.text,
+    this.textColor, {
+    super.key,
+    required this.buttonColor,
+  });
 
   final VoidCallback onTap;
   final String text;
@@ -17,7 +18,7 @@ class CupertinoActionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color:buttonColor,
+      color: buttonColor,
       child: CupertinoActionSheetAction(
         onPressed: onTap,
         child: Text(

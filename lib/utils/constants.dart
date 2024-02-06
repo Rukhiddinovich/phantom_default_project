@@ -16,4 +16,3 @@ const String twelveScreenRoute = '/twelve';
 const String thirteenScreenRoute = '/thirteen';
 const String fourteenScreenRoute = '/fourteen';
 const String fifteenScreenRoute = '/fifteen';
-const String sixteenScreenRoute = '/sixteen';

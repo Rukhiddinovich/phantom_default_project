@@ -55,7 +55,7 @@ class _ScreenThreeState extends State<ScreenThree>
           "Screen 3",
           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600,fontFamily: "Poppins",color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(

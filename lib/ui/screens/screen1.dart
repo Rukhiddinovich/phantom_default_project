@@ -45,7 +45,7 @@ class _ScreenOneState extends State<ScreenOne> with TickerProviderStateMixin {
           "Screen 1",
           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600,fontFamily: "Poppins",color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Transform.rotate(

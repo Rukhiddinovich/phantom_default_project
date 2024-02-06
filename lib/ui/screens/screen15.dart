@@ -1,38 +1,33 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ScreenFiveTeen extends StatefulWidget {
-  const ScreenFiveTeen({super.key});
+class ScreenFifteen extends StatefulWidget {
+  const ScreenFifteen({super.key});
 
   @override
-  State<ScreenFiveTeen> createState() => _ScreenFiveTeenState();
+  State<ScreenFifteen> createState() => _ScreenFifteenState();
 }
 
-class _ScreenFiveTeenState extends State<ScreenFiveTeen>
-    with SingleTickerProviderStateMixin {
+class _ScreenFifteenState extends State<ScreenFifteen>
+    with TickerProviderStateMixin {
   late AnimationController controller;
-  late Animation decorationAnimation;
-  bool isTapped = false;
+  late Animation rateAnimation;
+  late Animation sizeAnimation;
 
   @override
   void initState() {
     super.initState();
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
-    decorationAnimation = DecorationTween(
-      begin: BoxDecoration(
-          border: Border.all(width: 5.w, color: Colors.black),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(0)),
-      end: BoxDecoration(
-          border: Border.all(width: 5.w, color: Colors.black),
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(20.r)),
-    ).animate(controller);
+    rateAnimation = Tween(begin: 0, end: 3 * pi).animate(controller);
+    sizeAnimation = Tween(begin: 100.0, end: 50.0).animate(controller);
 
     controller.addListener(() {
       setState(() {});
     });
+    controller.repeat(reverse: true);
   }
 
   @override
@@ -47,33 +42,63 @@ class _ScreenFiveTeenState extends State<ScreenFiveTeen>
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration: const Duration(seconds: 0),
-              width: 200.w,
-              height: 200.h,
-              decoration: decorationAnimation.value,
-              child: FlutterLogo(
-                size: 150.r
-              ),
+        child: Transform.rotate(
+          angle: rateAnimation.value,
+          child: SizedBox(
+            width: sizeAnimation.value * 2,
+            height: sizeAnimation.value * 2,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.red,
+                    ),
+                    width: sizeAnimation.value,
+                    height: sizeAnimation.value,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.green,
+                    ),
+                    width: sizeAnimation.value,
+                    height: sizeAnimation.value,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.yellow,
+                    ),
+                    width: sizeAnimation.value,
+                    height: sizeAnimation.value,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.indigoAccent,
+                    ),
+                    width: sizeAnimation.value,
+                    height: sizeAnimation.value,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: 10.h),
-            ElevatedButton(
-              onPressed: () {
-                isTapped ? controller.reverse() : controller.forward();
-                isTapped = !isTapped;
-              },
-              child: Text(
-                "Click me",
-                style: TextStyle(fontSize: 20.sp, fontFamily: "Poppins"),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

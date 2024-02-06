@@ -9,32 +9,22 @@ class ScreenTen extends StatefulWidget {
 }
 
 class _ScreenTenState extends State<ScreenTen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation decorationAnimation;
+  late Animation alignAnimation;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-        vsync: this,
-        duration: Duration(seconds: 3)
-    );
-    decorationAnimation = DecorationTween(
-        begin: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(width: 5, color: Colors.orange),
-            color: Colors.yellow),
-        end: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(width: 50, color: Colors.red),
-            color: Colors.deepPurple))
-        .animate(controller);
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
+    alignAnimation = AlignmentTween(
+            begin: Alignment.topLeft, end: Alignment.bottomRight)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.bounceIn));
     controller.addListener(() {
       setState(() {});
     });
-    controller.repeat(reverse: true);
   }
 
   @override
@@ -49,14 +39,47 @@ class _ScreenTenState extends State<ScreenTen>
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: AnimatedContainer(
-          duration: Duration(seconds: 0),
-          width: 200.w,
-          height: 200.h,
-          decoration: decorationAnimation.value,
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300.w,
+              height: 300.h,
+              color: Colors.lightBlueAccent,
+              child: AnimatedAlign(
+                alignment: alignAnimation.value,
+                duration: const Duration(seconds: 0),
+                child: Text(
+                  "Woolha.com",
+                  style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Poppins",
+                      color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.h),
+            TextButton(
+              onPressed: () {
+                controller.reset();
+                controller.forward();
+              },
+              child: Text(
+                "Change Alignment",
+                style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins",
+                    color: Colors.blue),
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -8,22 +8,27 @@ class ScreenThirteen extends StatefulWidget {
   State<ScreenThirteen> createState() => _ScreenThirteenState();
 }
 
-class _ScreenThirteenState extends State<ScreenThirteen>  with SingleTickerProviderStateMixin{
-  late AnimationController controller;
+class _ScreenThirteenState extends State<ScreenThirteen>
+    with TickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation colorAnimation;
   late Animation sizeAnimation;
+  late Animation<double> percentAnimation;
 
   @override
   void initState() {
     super.initState();
-    controller=AnimationController(vsync: this,duration: Duration(seconds: 3));
-
-    sizeAnimation=Tween(begin: 100.0,end: 300.0).animate(controller);
-    controller.addListener(() {setState(() {
-
-    });});
-
-    controller.forward();
-
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    colorAnimation = ColorTween(begin: Colors.blue, end: Colors.yellow)
+        .animate(animationController);
+    sizeAnimation =
+        Tween(begin: 0.0, end: 350.0.w).animate(animationController);
+    percentAnimation =
+        Tween<double>(begin: 0.0, end: 100.0).animate(animationController);
+    animationController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -38,15 +43,49 @@ class _ScreenThirteenState extends State<ScreenThirteen>  with SingleTickerProvi
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Center(
-        child: AnimatedSize(
-          duration: const Duration(seconds: 0),
-          child: Container(
-            color: Colors.yellow,
-            child: FlutterLogo(size: sizeAnimation.value,),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 200.w,
+              height: 200.h,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle, color: colorAnimation.value),
+            ),
+            SizedBox(height: 50.h),
+            Stack(
+              children: [
+                Container(
+                  height: 50.h,
+                  width: 350.w,
+                  color: Colors.blue.withOpacity(0.7),
+                ),
+                Container(
+                  height: 50.h,
+                  width: sizeAnimation.value,
+                  color: Colors.blueAccent,
+                )
+              ],
+            ),
+            SizedBox(height: 20.h),
+            Text(
+              "${percentAnimation.value.toInt()} %",
+              style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black),
+            ),
+            SizedBox(height: 20.h),
+            ElevatedButton(
+                onPressed: () {
+                  animationController.reset();
+                  animationController.forward();
+                },
+                child: const Text("Animate"))
+          ],
         ),
       ),
     );

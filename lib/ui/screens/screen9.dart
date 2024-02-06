@@ -8,14 +8,33 @@ class ScreenNine extends StatefulWidget {
   State<ScreenNine> createState() => _ScreenNineState();
 }
 
-class _ScreenNineState extends State<ScreenNine> with TickerProviderStateMixin {
-  late AnimationController _controller;
+class _ScreenNineState extends State<ScreenNine>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation decorationAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    controller = AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 3)
+    );
+    decorationAnimation = DecorationTween(
+        begin: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(width: 5, color: Colors.orange),
+            color: Colors.yellow),
+        end: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(width: 50, color: Colors.red),
+            color: Colors.deepPurple))
+        .animate(controller);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+    controller.repeat(reverse: true);
   }
 
   @override
@@ -30,20 +49,15 @@ class _ScreenNineState extends State<ScreenNine> with TickerProviderStateMixin {
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
-      body: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Transform.translate(
-            offset: Offset(0, 100 * _controller.value),
-            child: Container(
-              height: 20,
-              width: 100,
-              color: Colors.blue
-            ),
-          );
-        },
+      body: Center(
+        child: AnimatedContainer(
+          duration: const Duration(seconds: 0),
+          width: 200.w,
+          height: 200.h,
+          decoration: decorationAnimation.value,
+        ),
       ),
     );
   }

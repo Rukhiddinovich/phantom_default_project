@@ -26,7 +26,7 @@ class _ScreenFourState extends State<ScreenFour> {
               fontFamily: "Poppins",
               color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       body: Column(
         children: [

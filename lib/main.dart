@@ -1,5 +1,6 @@
 import 'package:default_project/ui/app_routes.dart';
 import 'package:default_project/utils/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,10 +20,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
-
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            actionIconTheme: ActionIconThemeData(
+              backButtonIconBuilder: (BuildContext context) => IconButton(
+                onPressed: () => Navigator.maybePop(context),
+                icon: const Icon(CupertinoIcons.back,color: Colors.white),
+              ),
+            ),
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
             useMaterial3: true,
           ),
