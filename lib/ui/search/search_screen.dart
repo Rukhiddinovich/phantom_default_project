@@ -1,10 +1,10 @@
+import 'package:default_project/local/storage_repository.dart';
+import 'package:default_project/utils/colors.dart';
+import 'package:default_project/utils/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../../local/storage_repository.dart';
-import '../../utils/colors.dart';
-import '../../utils/icons.dart';
 
 String query = '';
 
@@ -19,7 +19,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController controller = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +47,14 @@ class _SearchScreenState extends State<SearchScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            size: 25.sp,
-                            color: Colors.black,
-                          ),
+                          icon: Icon(Icons.arrow_back,
+                              size: 25.sp, color: Colors.black),
                         ),
                       ),
                     ),
                     SizedBox(width: 10.w),
                     Container(
-                      width: 250.w,
-                      height: 40.h,
+                      padding: EdgeInsets.symmetric(horizontal: 95.w,vertical: 6.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
                           color: Colors.white),
@@ -121,9 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20.h),
                 const Spacer(),
                 ZoomTapAnimation(
                   onTap: () {

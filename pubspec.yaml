@@ -14,15 +14,15 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.2
-  flutter_svg: ^2.0.6
-  flutter_screenutil: ^5.8.4
-  easy_localization: ^3.0.2
-  shared_preferences: ^2.1.2
+  cupertino_icons: ^1.0.6
+  flutter_svg: ^2.0.9
+  flutter_screenutil: ^5.9.0
+  easy_localization: ^3.0.3
+  shared_preferences: ^2.2.2
   zoom_tap_animation: ^1.1.0
-  http: ^1.1.0
-  cached_network_image: ^3.2.3
-  location: ^5.0.0
+  http: ^1.2.0
+  cached_network_image: ^3.3.1
+  location: ^5.0.3
   flutter_carousel_slider: ^1.1.0
   shimmer: ^3.0.0
 
@@ -31,7 +31,7 @@ dev_dependencies:
     sdk: flutter
 
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 
 flutter:
@@ -68,83 +68,4 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-Thin.ttf
         - asset: assets/fonts/Poppins/Poppins-ThinItalic.ttf
 
-    - family: Montserrat
-      fonts:
-         - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-ExtraLight.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-ExtraLightItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-LightItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
-         - asset: assets/fonts/Montserrat/Montserrat-ThinItalic.ttf
-
-    - family: Raleway
-      fonts:
-         - asset: assets/fonts/Raleway/Raleway-Black.ttf
-         - asset: assets/fonts/Raleway/Raleway-BlackItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Bold.ttf
-         - asset: assets/fonts/Raleway/Raleway-BoldItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-ExtraBold.ttf
-         - asset: assets/fonts/Raleway/Raleway-ExtraBoldItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-ExtraLight.ttf
-         - asset: assets/fonts/Raleway/Raleway-ExtraLightItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Italic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Light.ttf
-         - asset: assets/fonts/Raleway/Raleway-LightItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Medium.ttf
-         - asset: assets/fonts/Raleway/Raleway-MediumItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Regular.ttf
-         - asset: assets/fonts/Raleway/Raleway-SemiBold.ttf
-         - asset: assets/fonts/Raleway/Raleway-SemiBoldItalic.ttf
-         - asset: assets/fonts/Raleway/Raleway-Thin.ttf
-         - asset: assets/fonts/Raleway/Raleway-ThinItalic.ttf
-
-    - family: DMSans
-      fonts:
-         - asset: assets/fonts/DMSans/DMSans-BoldItalic.ttf
-         - asset: assets/fonts/DMSans/DMSans-Italic.ttf
-         - asset: assets/fonts/DMSans/DMSans-Bold.ttf
-         - asset: assets/fonts/DMSans/DMSans-Medium.ttf
-         - asset: assets/fonts/DMSans/DMSans-MediumItalic.ttf
-         - asset: assets/fonts/DMSans/DMSans-Regular.ttf
-
-    - family: DMSans
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Black.ttf
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
-        - asset: assets/fonts/Inter/Inter-ExtraBold.ttf
-        - asset: assets/fonts/Inter/Inter-ExtraLight.ttf
-        - asset: assets/fonts/Inter/Inter-Light.ttf
-        - asset: assets/fonts/Inter/Inter-Medium.ttf
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
-        - asset: assets/fonts/Inter/Inter-Thin.ttf
-
-    - family: DMSans
-      fonts:
-        - asset: assets/fonts/Lato/Lato-Black.ttf
-        - asset: assets/fonts/Lato/Lato-BlackItalic.ttf
-        - asset: assets/fonts/Lato/Lato-Bold.ttf
-        - asset: assets/fonts/Lato/Lato-BoldItalic.ttf
-        - asset: assets/fonts/Lato/Lato-Italic.ttf
-        - asset: assets/fonts/Lato/Lato-Light.ttf
-        - asset: assets/fonts/Lato/Lato-LightItalic.ttf
-        - asset: assets/fonts/Lato/Lato-Regular.ttf
-        - asset: assets/fonts/Lato/Lato-Thin.ttf
-        - asset: assets/fonts/Lato/Lato-ThinItalic.ttf
-
-    - family: MetalMania
-      fonts:
-        - asset: assets/fonts/MetalMania/MetalMania-Regular.ttf
 

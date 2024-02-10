@@ -2,6 +2,7 @@ import 'package:default_project/data/models/detail/one_call_data.dart';
 import 'package:default_project/data/models/main/weather_main.dart';
 import 'package:default_project/ui/days_screen/days_screen.dart';
 import 'package:default_project/ui/search/search_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,7 +16,7 @@ import '../../utils/icons.dart';
 import '../../utils/my_utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
+                                  CupertinoPageRoute(
                                     builder: (context) {
                                       return SevenDaysScreen(
                                         dailyItem: oneCallData.daily,
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
+                                  CupertinoPageRoute(
                                     builder: (context) {
                                       return SearchScreen(
                                         onSearchTap: () {
@@ -158,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fontFamily: "Poppins",
                                           fontSize: 15.sp,
                                           fontWeight: FontWeight.w600,
-                                          color: AppColors.C_9A938C),
+                                          color: AppColors.black),
                                     ),
                                   ],
                                 ),
@@ -357,46 +358,43 @@ class _HomeScreenState extends State<HomeScreen> {
                                 colors: [Colors.white, Colors.white60],
                               ),
                             ),
-                            child: Expanded(
-                              child: ListView(
-                                children: [
-                                  ...List.generate(
-                                    oneCallData.hourly.length,
-                                    (index) => ListTile(
-                                      leading: Text(
-                                        MyUtils.getDateTime(
-                                                oneCallData.hourly[index].dt)
-                                            .toString()
-                                            .substring(10, 16),
+                            child: ListView.builder(
+                              physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: oneCallData.hourly.length,
+                                itemBuilder: (item, index) {
+                              return ListTile(
+                                leading: Text(
+                                  MyUtils.getDateTime(
+                                      oneCallData.hourly[index].dt)
+                                      .toString()
+                                      .substring(10, 16),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 18.sp,
+                                      fontFamily: "Poppins",
+                                      color: AppColors.C_303345),
+                                ),
+                                trailing: SizedBox(
+                                  width: 125.w,
+                                  child: Row(
+                                    children: [
+                                      Image.network(
+                                        "https://openweathermap.org/img/wn/${oneCallData.hourly[index].weather[0].icon}@2x.png",
+                                      ),
+                                      Text(
+                                        "${(oneCallData.hourly[0].temp).toInt()}\n",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 18.sp,
                                             fontFamily: "Poppins",
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18.sp,
                                             color: AppColors.C_303345),
                                       ),
-                                      trailing: SizedBox(
-                                        width: 125.w,
-                                        child: Row(
-                                          children: [
-                                            Image.network(
-                                              "https://openweathermap.org/img/wn/${oneCallData.hourly[index].weather[0].icon}@2x.png",
-                                            ),
-                                            Text(
-                                              "${(oneCallData.hourly[0].temp).toInt()}\n",
-                                              style: TextStyle(
-                                                  fontFamily: "Poppins",
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18.sp,
-                                                  color: AppColors.C_303345),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ),
+                                ),
+                              );
+                            }),
                           ),
                         ],
                       ),
