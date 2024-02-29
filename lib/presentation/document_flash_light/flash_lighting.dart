@@ -12,12 +12,12 @@ class MorseAlphabetRead extends StatefulWidget {
   const MorseAlphabetRead({super.key});
 
   @override
-  _MorseAlphabetReadState createState() => _MorseAlphabetReadState();
+  State<MorseAlphabetRead> createState() => _MorseAlphabetReadState();
 }
 
 class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
   List<String> morseCodes = [];
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,7 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            CupertinoIcons.chevron_back,
-          ),
+          icon: const Icon(CupertinoIcons.chevron_back),
         ),
         elevation: 0,
         title: Text(
@@ -50,7 +48,7 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
             padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
             margin: EdgeInsets.symmetric(horizontal: 20.w),
             width: double.infinity,
-            constraints: BoxConstraints(maxHeight: 200, minHeight: 100),
+            constraints: const BoxConstraints(maxHeight: 200, minHeight: 100),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
                 color: Provider.of<ThemeProvider>(context).isDarkMode
@@ -58,7 +56,7 @@ class _MorseAlphabetReadState extends State<MorseAlphabetRead> {
                     : AppColors.passiveTextColor),
             child: SingleChildScrollView(
               controller: _scrollController,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Wrap(
                 children: morseCodes.map((code) {
                   return Padding(

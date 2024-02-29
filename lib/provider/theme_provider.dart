@@ -11,8 +11,6 @@ class ThemeProvider with ChangeNotifier {
   }
 
   ThemeData getTheme() {
-    return _isDarkMode
-        ? ThemeData.dark()
-        : ThemeData.light();
+    return _isDarkMode ? ThemeData.dark() : ThemeData.light();
   }
 }
